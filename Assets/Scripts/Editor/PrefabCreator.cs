@@ -16,9 +16,13 @@ namespace TheSSand.Editor
             CreatePlayerPrefab();
             CreateNPCPrefabs();
             CreateBossPrefab();
+            CreateBossEaglePrefab();
+            CreateBossWolfPrefab();
+            CreateBossTurtlePrefab();
             CreateProjectilePrefabs();
             CreateItemPrefabs();
             CreateEnvironmentPrefabs();
+            CreateCardUIPrefab();
 
             AssetDatabase.Refresh();
             Debug.Log("[Prefab] 전체 프리팹 생성 완료!");
@@ -155,6 +159,94 @@ namespace TheSSand.Editor
             }
 
             SavePrefab(obj, $"{PrefabRoot}/Boss/Boss_Hippo.prefab");
+        }
+
+        [MenuItem("The SSand/프리팹 생성/Boss Eagle")]
+        static void CreateBossEaglePrefab()
+        {
+            var obj = new GameObject("Boss_Eagle");
+            var sr = obj.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = 8;
+            obj.AddComponent<Boss.BossEagle>();
+            obj.AddComponent<Boss.NGBossModifier>();
+            SavePrefab(obj, $"{PrefabRoot}/Boss/Boss_Eagle.prefab");
+        }
+
+        [MenuItem("The SSand/프리팹 생성/Boss Wolf")]
+        static void CreateBossWolfPrefab()
+        {
+            var obj = new GameObject("Boss_Wolf");
+            var sr = obj.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = 8;
+            obj.AddComponent<Boss.BossWolf>();
+            obj.AddComponent<Boss.NGBossModifier>();
+            SavePrefab(obj, $"{PrefabRoot}/Boss/Boss_Wolf.prefab");
+        }
+
+        [MenuItem("The SSand/프리팹 생성/Boss Turtle")]
+        static void CreateBossTurtlePrefab()
+        {
+            var obj = new GameObject("Boss_Turtle");
+            var sr = obj.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = 8;
+            obj.AddComponent<Boss.BossTurtle>();
+            obj.AddComponent<Card.CardBattleManager>();
+            obj.AddComponent<Boss.NGBossModifier>();
+            SavePrefab(obj, $"{PrefabRoot}/Boss/Boss_Turtle.prefab");
+        }
+
+        [MenuItem("The SSand/프리팹 생성/Card UI")]
+        static void CreateCardUIPrefab()
+        {
+            if (!AssetDatabase.IsValidFolder($"{PrefabRoot}/UI"))
+                AssetDatabase.CreateFolder(PrefabRoot, "UI");
+
+            var obj = new GameObject("CardUI");
+            var rt = obj.AddComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(100, 140);
+
+            var bg = obj.AddComponent<UnityEngine.UI.Image>();
+            bg.color = new Color(0.93f, 0.87f, 0.73f);
+
+            var group = obj.AddComponent<CanvasGroup>();
+
+            obj.AddComponent<Card.CardUI>();
+
+            var nameObj = new GameObject("CardName");
+            nameObj.transform.SetParent(obj.transform, false);
+            var nameTMP = nameObj.AddComponent<TMPro.TextMeshProUGUI>();
+            nameTMP.fontSize = 10;
+            nameTMP.alignment = TMPro.TextAlignmentOptions.Center;
+            var nameRect = nameTMP.rectTransform;
+            nameRect.anchorMin = new Vector2(0, 0.85f);
+            nameRect.anchorMax = new Vector2(1, 1);
+            nameRect.offsetMin = Vector2.zero;
+            nameRect.offsetMax = Vector2.zero;
+
+            var costObj = new GameObject("CostText");
+            costObj.transform.SetParent(obj.transform, false);
+            var costTMP = costObj.AddComponent<TMPro.TextMeshProUGUI>();
+            costTMP.fontSize = 14;
+            costTMP.fontStyle = TMPro.FontStyles.Bold;
+            costTMP.alignment = TMPro.TextAlignmentOptions.Center;
+            var costRect = costTMP.rectTransform;
+            costRect.anchorMin = new Vector2(0, 0.85f);
+            costRect.anchorMax = new Vector2(0.25f, 1);
+            costRect.offsetMin = Vector2.zero;
+            costRect.offsetMax = Vector2.zero;
+
+            var descObj = new GameObject("DescText");
+            descObj.transform.SetParent(obj.transform, false);
+            var descTMP = descObj.AddComponent<TMPro.TextMeshProUGUI>();
+            descTMP.fontSize = 8;
+            descTMP.alignment = TMPro.TextAlignmentOptions.Center;
+            var descRect = descTMP.rectTransform;
+            descRect.anchorMin = new Vector2(0.05f, 0);
+            descRect.anchorMax = new Vector2(0.95f, 0.35f);
+            descRect.offsetMin = Vector2.zero;
+            descRect.offsetMax = Vector2.zero;
+
+            SavePrefab(obj, $"{PrefabRoot}/UI/CardUI.prefab");
         }
 
         [MenuItem("The SSand/프리팹 생성/Projectiles")]

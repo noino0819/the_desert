@@ -23,10 +23,15 @@ namespace TheSSand.Editor
             CreateCh1DesertScene();
             CreateCh1OasisScene();
             CreateCh1BossScene();
+            CreateCh2Scenes();
+            CreateCh3Scenes();
+            CreateCh4Scenes();
+            CreateEndingScene();
+            CreateNGScenes();
             RegisterScenesInBuildSettings();
 
-            Debug.Log("[SceneSetup] 5개 씬 생성 + Build Settings 등록 완료!");
-            EditorUtility.DisplayDialog("완료", "5개 씬이 생성되고 Build Settings에 자동 등록되었습니다.", "확인");
+            Debug.Log("[SceneSetup] 전체 씬 생성 + Build Settings 등록 완료!");
+            EditorUtility.DisplayDialog("완료", "전체 씬이 생성되고 Build Settings에 자동 등록되었습니다.", "확인");
         }
 
         [MenuItem("The SSand/Build Settings 씬 등록", false, 1)]
@@ -35,9 +40,15 @@ namespace TheSSand.Editor
             string[] sceneOrder = {
                 "SCN_TitleMenu",
                 "SCN_Prologue",
-                "SCN_Ch1_Desert",
-                "SCN_Ch1_Oasis",
-                "SCN_Ch1_Boss"
+                "SCN_Ch1_Desert", "SCN_Ch1_Oasis", "SCN_Ch1_Boss",
+                "SCN_Ch2_Desert", "SCN_Ch2_Oasis", "SCN_Ch2_Boss",
+                "SCN_Ch3_Desert", "SCN_Ch3_Oasis", "SCN_Ch3_Boss",
+                "SCN_Ch4_Desert", "SCN_Ch4_Oasis", "SCN_Ch4_Boss",
+                "SCN_Ending",
+                "SCN_NG_Ch4_Oasis", "SCN_NG_Ch4_Boss",
+                "SCN_NG_Ch3_Oasis", "SCN_NG_Ch3_Boss",
+                "SCN_NG_Ch2_Oasis", "SCN_NG_Ch2_Boss",
+                "SCN_NG_Ch1_Oasis", "SCN_NG_Ch1_Boss"
             };
 
             var buildScenes = new EditorBuildSettingsScene[sceneOrder.Length];
@@ -421,6 +432,227 @@ namespace TheSSand.Editor
             var col = wall.AddComponent<BoxCollider2D>();
             col.size = new Vector2(1, 14);
             wall.transform.position = pos;
+        }
+
+        #endregion
+
+        #region Ch.2~4 + 엔딩 + NG 씬
+
+        [MenuItem("The SSand/씬 생성/Ch.2 전체")]
+        static void CreateCh2Scenes()
+        {
+            CreateDesertScene("SCN_Ch2_Desert", new Color(0.95f, 0.65f, 0.35f),
+                "BGM_Ch2_Desert", "SCN_Ch2_Oasis");
+            CreateOasisScene("SCN_Ch2_Oasis", new Color(0.45f, 0.75f, 0.55f),
+                "잼잼크래프트", "SCN_Ch2_Boss");
+            CreateBossScene("SCN_Ch2_Boss", "독수리", new Color(0.55f, 0.75f, 0.95f),
+                typeof(Boss.BossEagle), typeof(Boss.Ch2BossController), "SCN_Ch3_Desert");
+        }
+
+        [MenuItem("The SSand/씬 생성/Ch.3 전체")]
+        static void CreateCh3Scenes()
+        {
+            CreateDesertScene("SCN_Ch3_Desert", new Color(0.6f, 0.4f, 0.65f),
+                "BGM_Ch3_Desert", "SCN_Ch3_Oasis");
+            CreateOasisScene("SCN_Ch3_Oasis", new Color(0.5f, 0.6f, 0.55f),
+                "솔", "SCN_Ch3_Boss");
+            CreateBossScene("SCN_Ch3_Boss", "늑대", new Color(0.25f, 0.2f, 0.35f),
+                typeof(Boss.BossWolf), typeof(Boss.Ch3BossController), "SCN_Ch4_Desert");
+        }
+
+        [MenuItem("The SSand/씬 생성/Ch.4 전체")]
+        static void CreateCh4Scenes()
+        {
+            CreateDesertScene("SCN_Ch4_Desert", new Color(0.15f, 0.18f, 0.3f),
+                "BGM_Ch4_Desert", "SCN_Ch4_Oasis");
+            CreateOasisScene("SCN_Ch4_Oasis", new Color(0.3f, 0.35f, 0.45f),
+                "연구자", "SCN_Ch4_Boss");
+            CreateBossScene("SCN_Ch4_Boss", "과일거북", new Color(0.2f, 0.25f, 0.35f),
+                typeof(Boss.BossTurtle), typeof(Boss.Ch4BossController), "SCN_Ending");
+        }
+
+        [MenuItem("The SSand/씬 생성/SCN_Ending")]
+        static void CreateEndingScene()
+        {
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+            var camObj = new GameObject("Main Camera");
+            var cam = camObj.AddComponent<Camera>();
+            cam.orthographic = true;
+            cam.orthographicSize = 5;
+            cam.backgroundColor = new Color(0.2f, 0.15f, 0.1f);
+            camObj.tag = "MainCamera";
+
+            var canvas = CreateCanvas("EndingCanvas");
+            var storyPanel = new GameObject("StoryPanel");
+            storyPanel.transform.SetParent(canvas.transform, false);
+            var storyRect = storyPanel.AddComponent<RectTransform>();
+            storyRect.anchorMin = Vector2.zero;
+            storyRect.anchorMax = Vector2.one;
+            storyPanel.AddComponent<Image>().color = new Color(0.1f, 0.08f, 0.06f, 0.95f);
+
+            CreateTMPText(storyPanel.transform, "EndingText", "", 28, TextAlignmentOptions.Center);
+
+            var endingCtrl = new GameObject("EndingController");
+            endingCtrl.AddComponent<UI.EndingController>();
+
+            var endingMgr = new GameObject("EndingManager");
+            endingMgr.AddComponent<Core.EndingManager>();
+
+            EditorSceneManager.SaveScene(scene, ScenesPath + "SCN_Ending.unity");
+            Debug.Log("[SceneSetup] SCN_Ending 생성");
+        }
+
+        [MenuItem("The SSand/씬 생성/NG 전체")]
+        static void CreateNGScenes()
+        {
+            string[] ngScenes = {
+                "SCN_NG_Ch4_Oasis", "SCN_NG_Ch4_Boss",
+                "SCN_NG_Ch3_Oasis", "SCN_NG_Ch3_Boss",
+                "SCN_NG_Ch2_Oasis", "SCN_NG_Ch2_Boss",
+                "SCN_NG_Ch1_Oasis", "SCN_NG_Ch1_Boss"
+            };
+
+            foreach (var sceneName in ngScenes)
+            {
+                var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+                var camObj = new GameObject("Main Camera");
+                var cam = camObj.AddComponent<Camera>();
+                cam.orthographic = true;
+                cam.orthographicSize = 5;
+                cam.backgroundColor = new Color(0.15f, 0.12f, 0.18f);
+                camObj.tag = "MainCamera";
+
+                var ctrl = new GameObject("NGChapterController");
+                ctrl.AddComponent<Level.NGChapterController>();
+
+                if (sceneName.Contains("Boss"))
+                {
+                    var ngMod = new GameObject("NGBossModifier");
+                    ngMod.AddComponent<Boss.NGBossModifier>();
+                }
+
+                CreateDialogueUI(scene);
+                CreateInGameHUD();
+
+                EditorSceneManager.SaveScene(scene, ScenesPath + sceneName + ".unity");
+                Debug.Log($"[SceneSetup] {sceneName} 생성");
+            }
+        }
+
+        static void CreateDesertScene(string sceneName, Color skyColor, string bgmName, string nextScene)
+        {
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+            var camObj = new GameObject("Main Camera");
+            var cam = camObj.AddComponent<Camera>();
+            cam.orthographic = true;
+            cam.orthographicSize = 5;
+            cam.backgroundColor = skyColor;
+            camObj.tag = "MainCamera";
+
+            var ground = CreateTiledGround("Ground",
+                LoadSprite($"{ArtPath}Tilesets/tileset_desert.png"),
+                200f, 2f, new Vector3(50, -3, 0));
+
+            var player = InstantiateOrCreate("Player",
+                $"{PrefabPath}Characters/Player.prefab", new Vector3(-8, 0, 0));
+
+            var exitTrigger = new GameObject("ExitTrigger");
+            exitTrigger.transform.position = new Vector3(95, 0, 0);
+            var exitCol = exitTrigger.AddComponent<BoxCollider2D>();
+            exitCol.isTrigger = true;
+            exitCol.size = new Vector2(2, 10);
+            exitTrigger.AddComponent<Level.SceneTransitionTrigger>();
+
+            var levelCtrl = new GameObject("DesertLevelController");
+            levelCtrl.AddComponent<Level.DesertLevelController>();
+
+            CreateDialogueUI(scene);
+            CreateInGameHUD();
+
+            EditorSceneManager.SaveScene(scene, ScenesPath + sceneName + ".unity");
+            Debug.Log($"[SceneSetup] {sceneName} 생성");
+        }
+
+        static void CreateOasisScene(string sceneName, Color bgColor, string mainNPC, string bossScene)
+        {
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+            var camObj = new GameObject("Main Camera");
+            var cam = camObj.AddComponent<Camera>();
+            cam.orthographic = true;
+            cam.orthographicSize = 5;
+            cam.backgroundColor = bgColor;
+            camObj.tag = "MainCamera";
+
+            var ground = CreateTiledGround("Ground",
+                LoadSprite($"{ArtPath}Tilesets/tileset_oasis.png"),
+                60f, 2f, new Vector3(0, -3, 0));
+
+            var player = InstantiateOrCreate("Player",
+                $"{PrefabPath}Characters/Player.prefab", new Vector3(-12, 0, 0));
+
+            var npc = new GameObject($"NPC_{mainNPC}");
+            npc.transform.position = new Vector3(0, -1.5f, 0);
+            npc.AddComponent<Level.NPCInteractable>();
+
+            var savePoint = new GameObject("SavePoint");
+            savePoint.transform.position = new Vector3(-5, -1.5f, 0);
+            savePoint.AddComponent<Level.SavePoint>();
+
+            var bossZone = new GameObject("BossZoneTrigger");
+            bossZone.transform.position = new Vector3(20, 0, 0);
+            var bossCol = bossZone.AddComponent<BoxCollider2D>();
+            bossCol.isTrigger = true;
+            bossCol.size = new Vector2(2, 10);
+            bossZone.AddComponent<Level.SceneTransitionTrigger>();
+            bossZone.SetActive(false);
+
+            var oasisCtrl = new GameObject("OasisController");
+            oasisCtrl.AddComponent<Level.OasisController>();
+
+            CreateDialogueUI(scene);
+            CreateInGameHUD();
+
+            EditorSceneManager.SaveScene(scene, ScenesPath + sceneName + ".unity");
+            Debug.Log($"[SceneSetup] {sceneName} 생성");
+        }
+
+        static void CreateBossScene(string sceneName, string bossName, Color bgColor,
+            System.Type bossType, System.Type controllerType, string nextScene)
+        {
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+
+            var camObj = new GameObject("Main Camera");
+            var cam = camObj.AddComponent<Camera>();
+            cam.orthographic = true;
+            cam.orthographicSize = 6;
+            cam.backgroundColor = bgColor;
+            camObj.tag = "MainCamera";
+
+            var player = new GameObject("Player");
+            player.tag = "Player";
+            player.transform.position = new Vector3(0, -3.5f, 0);
+            player.AddComponent<SpriteRenderer>().sortingOrder = 10;
+            player.AddComponent<BoxCollider2D>().isTrigger = true;
+
+            var boss = new GameObject($"Boss_{bossName}");
+            boss.transform.position = new Vector3(0, 3, 0);
+            boss.AddComponent(bossType);
+            boss.AddComponent<Boss.NGBossModifier>();
+
+            var uiCanvas = CreateCanvas("BossUICanvas");
+            var bossUI = new GameObject("BossUIController");
+            bossUI.transform.SetParent(uiCanvas.transform, false);
+            bossUI.AddComponent<Boss.BossUIController>();
+
+            var ctrl = new GameObject($"BossController");
+            ctrl.AddComponent(controllerType);
+
+            EditorSceneManager.SaveScene(scene, ScenesPath + sceneName + ".unity");
+            Debug.Log($"[SceneSetup] {sceneName} 생성");
         }
 
         #endregion

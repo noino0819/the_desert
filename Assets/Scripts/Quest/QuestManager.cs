@@ -230,6 +230,17 @@ namespace TheSSand.Quest
 
         #region 유틸
 
+        public List<QuestData> GetActiveQuests()
+        {
+            var active = new List<QuestData>();
+            foreach (var kv in _quests)
+            {
+                if (kv.Value.state == QuestState.Active)
+                    active.Add(kv.Value);
+            }
+            return active;
+        }
+
         public bool AreAllCompleted(params string[] questIds)
         {
             foreach (var id in questIds)

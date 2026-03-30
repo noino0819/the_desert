@@ -27,6 +27,8 @@ namespace TheSSand.Quest
         /// </summary>
         public string[] flagsOnComplete;
 
+        public Vector2 mapMarkerPosition;
+
         public bool IsCountable => goal > 0;
 
         public float ProgressNormalized =>
