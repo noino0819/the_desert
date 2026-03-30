@@ -1,0 +1,47 @@
+{
+  "npcId": "fairy_seed_ch2",
+  "lines": [
+    {
+      "lineId": "seed_prompt",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "용사님! 두 번째 씨앗이에요! 여기 심으면 이 오아시스가 더 커질 거예요!",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "씨앗을 심는다",
+          "nextLineId": "seed_plant",
+          "flagToSet": "plantSeed",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "심지 않는다",
+          "nextLineId": "seed_refuse",
+          "flagToSet": "refuseSeed",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "seed_plant",
+      "speaker": "요정",
+      "portrait": "fairy_happy",
+      "text": "두 번째 씨앗도 심었어요! 이제 두 개 남았어요. 계속 가요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "seed_refuse",
+      "speaker": "요정",
+      "portrait": "fairy_sad",
+      "text": "또 안 심을 거예요...? 이 아이들한테 필요한 건데...",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

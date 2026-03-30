@@ -5,7 +5,7 @@
       "lineId": "greet_initial",
       "speaker": "대장소년",
       "portrait": "captain_boy_neutral",
-      "text": "...누구야, 너. 여기 어떻게 온 거야?",
+      "text": "사막 반대편에서 왔어?",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Inactive" },
       "choices": null
@@ -13,8 +13,17 @@
     {
       "lineId": "greet_initial_2",
       "speaker": "대장소년",
-      "portrait": "captain_boy_angry",
-      "text": "외부인은 함부로 들어올 수 없어. 하지만... 물이 필요하긴 해.",
+      "portrait": "captain_boy_serious",
+      "text": "요즘 외부인이 오는 경우는 두 가지야.\n도둑이거나, 아니거나.",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "greet_initial_3",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_smirk",
+      "text": "세상을 구한다고. 멋있는 말이네.",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Inactive" },
       "choices": null
@@ -22,41 +31,41 @@
     {
       "lineId": "quest_offer",
       "speaker": "대장소년",
-      "portrait": "captain_boy_worried",
-      "text": "우리 하마가 요즘 물을 잘 안 내놔. 네가 도와줄 수 있겠어?",
+      "portrait": "captain_boy_serious",
+      "text": "우리 마을은 사흘째 물이 없어.\n세상 구하기 전에, 우리 물 문제부터 해결해줄 수 있어?",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Inactive" },
       "choices": [
         {
-          "text": "도와줄게!",
-          "nextLineId": "quest_accept",
+          "text": "해볼게.",
+          "nextLineId": "quest_accept_a",
           "flagToSet": "",
-          "questToProgress": "",
+          "questToProgress": "ch1_water",
           "condition": null
         },
         {
-          "text": "왜 내가?",
-          "nextLineId": "quest_reluctant",
+          "text": "...알겠어.",
+          "nextLineId": "quest_accept_b",
           "flagToSet": "",
-          "questToProgress": "",
+          "questToProgress": "ch1_water",
           "condition": null
         }
       ]
     },
     {
-      "lineId": "quest_accept",
+      "lineId": "quest_accept_a",
       "speaker": "대장소년",
-      "portrait": "captain_boy_neutral",
-      "text": "고마워. 하마가 좋아하는 진흙을 찾아오면 될 거야. 마을 밖 어딘가에 매장지가 있을 거야.",
+      "portrait": "captain_boy_surprised",
+      "text": "말은 잘 하네. 기대해볼게.",
       "isNG": false,
       "condition": null,
       "choices": null
     },
     {
-      "lineId": "quest_reluctant",
+      "lineId": "quest_accept_b",
       "speaker": "대장소년",
-      "portrait": "captain_boy_annoyed",
-      "text": "...우리도 네가 필요하고, 너도 물이 필요하잖아. 어차피 같은 처지야.",
+      "portrait": "captain_boy_neutral",
+      "text": "뭐, 됐어. 애초에 기대도 안 했으니까.\n썩 꺼져주면 좋겠는걸.",
       "isNG": false,
       "condition": null,
       "choices": null
@@ -65,7 +74,7 @@
       "lineId": "during_quest",
       "speaker": "대장소년",
       "portrait": "captain_boy_neutral",
-      "text": "진흙 매장지를 찾았어? 아직이면 마을 밖을 좀 더 둘러봐.",
+      "text": "진흙 매장지를 찾아. 하마가 좋아할 거야.",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Active" },
       "choices": null
@@ -73,8 +82,8 @@
     {
       "lineId": "quest_complete",
       "speaker": "대장소년",
-      "portrait": "captain_boy_surprised",
-      "text": "...정말 해냈어! 하마가 물을 내놓기 시작했어!",
+      "portrait": "captain_boy_silent",
+      "text": "...",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Completed" },
       "choices": null
@@ -82,19 +91,137 @@
     {
       "lineId": "quest_complete_2",
       "speaker": "대장소년",
-      "portrait": "captain_boy_neutral",
-      "text": "고마워, 용사. 음... 혹시 진흙쿠키 배달도 좀 도와줄 수 있어?",
+      "portrait": "captain_boy_awkward",
+      "text": "진짜로 해냈어.\n고마워.",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Completed" },
       "choices": [
         {
-          "text": "좋아, 도와줄게.",
-          "nextLineId": null,
+          "text": "당연한 거야.",
+          "nextLineId": "water_response_a",
           "flagToSet": "",
-          "questToProgress": "ch1_mudcookie",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "별거 아니야.",
+          "nextLineId": "water_response_b",
+          "flagToSet": "",
+          "questToProgress": "",
           "condition": null
         }
       ]
+    },
+    {
+      "lineId": "water_response_a",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_smirk",
+      "text": "자신감은 있네.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "water_response_b",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "...별거 맞는데.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "mudcookie_offer",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "부탁이 하나 더 있어.\n진흙쿠키 — 우리 마을 전통 음식이야.\n어르신들이 오래 못 드셨거든.\n만들어서 집마다 돌려줄 수 있어?",
+      "isNG": false,
+      "condition": { "questId": "ch1_mudcookie", "state": "Inactive" },
+      "choices": [
+        {
+          "text": "해줄게.",
+          "nextLineId": "mudcookie_accept",
+          "flagToSet": "",
+          "questToProgress": "ch1_mudcookie",
+          "condition": null
+        },
+        {
+          "text": "지금은 좀...",
+          "nextLineId": "mudcookie_decline",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "mudcookie_accept",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "집은 세 군데야. 저기 빨간 문, 파란 문, 그리고 광장 끝 집.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "mudcookie_decline",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "알겠어. 바쁘면 어쩔 수 없지.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_explain",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_serious",
+      "text": "용사님, 솔직히 물어볼게.\n우리 마을 수호신이 있어. 사막하마.\n근데 용사님은 왜 하마를 약하게 만들어야 한다고 하는 거야?\n하마는 오히려 우리 마을 구세주였는데.",
+      "isNG": false,
+      "condition": { "questId": "ch1_mudcookie", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_doubt",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_worried",
+      "text": "…그게 사실이야?\n하마가 그랬을 줄은 몰랐는데.",
+      "isNG": false,
+      "condition": { "questId": "ch1_mudcookie", "state": "Completed" },
+      "choices": [
+        {
+          "text": "내가 직접 확인했어.",
+          "nextLineId": "boss_trust",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "내 말을 못 믿겠어?",
+          "nextLineId": "boss_force",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "boss_trust",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_uncertain",
+      "text": "…알겠어. 용사 말을 믿어볼게.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_force",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_stiff",
+      "text": "…알겠어.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
     }
   ]
 }

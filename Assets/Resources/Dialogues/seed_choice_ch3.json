@@ -1,0 +1,47 @@
+{
+  "npcId": "fairy_seed_ch3",
+  "lines": [
+    {
+      "lineId": "seed_prompt",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "세 번째 씨앗이에요! 이 오아시스가 하나로 합쳐진 지금이 딱 좋은 타이밍이에요!",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "씨앗을 심는다",
+          "nextLineId": "seed_plant",
+          "flagToSet": "plantSeed",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "심지 않는다",
+          "nextLineId": "seed_refuse",
+          "flagToSet": "refuseSeed",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "seed_plant",
+      "speaker": "요정",
+      "portrait": "fairy_happy",
+      "text": "세 번째 씨앗! 이제 마지막 하나만 남았어요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "seed_refuse",
+      "speaker": "요정",
+      "portrait": "fairy_cold",
+      "text": "...그래요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

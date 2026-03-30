@@ -1,0 +1,47 @@
+{
+  "npcId": "fairy_seed_ch4",
+  "lines": [
+    {
+      "lineId": "seed_prompt",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "마지막 씨앗이에요, 용사님. 이걸로 네 곳의 땅이 모두 살아나요.",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "마지막 씨앗을 심는다",
+          "nextLineId": "seed_plant",
+          "flagToSet": "plantSeed",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "심지 않는다",
+          "nextLineId": "seed_refuse",
+          "flagToSet": "refuseSeed",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "seed_plant",
+      "speaker": "요정",
+      "portrait": "fairy_happy",
+      "text": "네 개의 씨앗이 모두 심어졌어요! 세상이 다시 살아날 거예요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "seed_refuse",
+      "speaker": "요정",
+      "portrait": "fairy_expressionless",
+      "text": "...",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

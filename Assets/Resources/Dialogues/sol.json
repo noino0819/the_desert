@@ -1,0 +1,119 @@
+{
+  "npcId": "sol",
+  "lines": [
+    {
+      "lineId": "greet_initial",
+      "speaker": "솔",
+      "portrait": "sol_cautious",
+      "text": "외부인이군요. 어디서 왔어요?",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "spy_request",
+      "speaker": "솔",
+      "portrait": "sol_earnest",
+      "text": "저쪽 B오아시스에 스파이로 들어가줄 수 있어요?\n보름달이 뜨는 날, 늑대축제가 열려요.\n우리가 이기려면 저쪽 약점을 알아야 하거든요.\n당신을 외부인이라 믿는다면 접근할 수 있을 거예요.",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Inactive" },
+      "choices": [
+        {
+          "text": "하겠어.",
+          "nextLineId": "spy_accept",
+          "flagToSet": "",
+          "questToProgress": "ch3_doubleAgent",
+          "condition": null
+        },
+        {
+          "text": "생각해볼게.",
+          "nextLineId": "spy_later",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "spy_accept",
+      "speaker": "솔",
+      "portrait": "sol_relieved",
+      "text": "고마워요. 조심하세요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "spy_later",
+      "speaker": "솔",
+      "portrait": "sol_neutral",
+      "text": "알겠어요. 마음이 정해지면 알려주세요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "during_spy",
+      "speaker": "솔",
+      "portrait": "sol_worried",
+      "text": "저쪽에서 뭔가 알아냈어요?",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "wall_scene",
+      "speaker": "솔",
+      "portrait": "sol_lowvoice",
+      "text": "루나.\n이번 축제… 안 해도 되지 않을까.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "wall_scene_2",
+      "speaker": "솔",
+      "portrait": "sol_pained",
+      "text": "알아. 근데…\n춤 추기 싫어.\n누가 이기든 우리는 행복하지 못할 거야.\n우리는 그냥 둘이 만나 춤을 추고 싶은 거지.\n이렇게 생명의 존속을 놓고 싸우고 싶진 않단 말이야.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_pre",
+      "speaker": "솔",
+      "portrait": "sol_grateful",
+      "text": "용사, 정말 고마워요.\n근데 한 가지 물어봐도 될까요?",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_doubt",
+      "speaker": "솔",
+      "portrait": "sol_honest",
+      "text": "…잘 모르겠어요. 늑대가 그런 것 같지는 않았는데.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_resolve",
+      "speaker": "솔",
+      "portrait": "sol_determined",
+      "text": "…알겠어요. 용사 말을 믿어보죠.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_forced",
+      "speaker": "솔",
+      "portrait": "sol_stiff",
+      "text": "…알겠어요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "npcId": "luna",
+  "lines": [
+    {
+      "lineId": "greet_initial",
+      "speaker": "루나",
+      "portrait": "luna_calm",
+      "text": "A측에서 온 사람이군요.\n우리한테도 스파이를 부탁하러 온 거죠?",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "spy_request",
+      "speaker": "루나",
+      "portrait": "luna_neutral",
+      "text": "상관없어요. 저도 같은 부탁을 할 테니까.\n저쪽 약점을 알아와줘요.\n늑대축제에서 이겨야 우리 마을이 살아남아요.",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "wall_scene",
+      "speaker": "루나",
+      "portrait": "luna_quiet",
+      "text": "우리가 결정할 수 있는 게 아니야, 솔.\n주민들이 기다리고 있잖아.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "wall_scene_2",
+      "speaker": "루나",
+      "portrait": "luna_small_voice",
+      "text": "나도.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_pre",
+      "speaker": "루나",
+      "portrait": "luna_thoughtful",
+      "text": "늑대는… 우리 마을 수호신이에요.\n오래 전부터 우리 곁에 있었는데.\n그게 분열의 원인이라는 게, 솔직히 잘 납득이 안 가서요.",
+      "isNG": false,
+      "condition": { "questId": "ch3_doubleAgent", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_trust",
+      "speaker": "루나",
+      "portrait": "luna_resolved",
+      "text": "그래도.\n용사를 믿어볼게요.\n여기까지 온 사람이니까요.",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "후회 안 할 거야.",
+          "nextLineId": "boss_a",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "내 말대로 하지 않으면 힘들어진다.",
+          "nextLineId": "boss_b",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "boss_a",
+      "speaker": "솔",
+      "portrait": "sol_determined",
+      "text": "…알겠어요. 용사 말을 믿어보죠.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_b",
+      "speaker": "",
+      "portrait": "sol_stiff",
+      "text": "…알겠어요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

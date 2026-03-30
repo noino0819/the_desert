@@ -2,56 +2,30 @@
   "npcId": "villager_1",
   "lines": [
     {
-      "lineId": "greet",
-      "speaker": "할머니",
-      "portrait": "villager_elderly",
-      "text": "어머, 낯선 아이가 왔네. 이런 사막에서 어디서 온 게야?",
-      "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Inactive" },
-      "choices": null
-    },
-    {
-      "lineId": "during_water",
-      "speaker": "할머니",
-      "portrait": "villager_elderly",
-      "text": "대장이가 하마 이야기를 했구나... 그 녀석, 요즘 성격이 고약해졌단다.",
+      "lineId": "water_quest_hint",
+      "speaker": "주민_할머니",
+      "portrait": "villager_grandma",
+      "text": "물이 없어서 큰일이에요, 젊은이.\n사막하마가 있을 땐 참 좋았는데…",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Active" },
       "choices": null
     },
     {
-      "lineId": "water_done",
-      "speaker": "할머니",
-      "portrait": "villager_elderly",
-      "text": "물이 돌아왔어! 고맙다, 아가. 이 진흙쿠키라도 가져가렴.",
+      "lineId": "water_quest_hint2",
+      "speaker": "주민_할머니",
+      "portrait": "villager_grandma",
+      "text": "하마한테 뭔가 먹이면 움직이려나.\n그 녀석들, 진흙을 엄청 좋아하거든요.",
       "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Completed" },
+      "condition": { "questId": "ch1_water", "state": "Active" },
       "choices": null
     },
     {
-      "lineId": "mudcookie_active",
-      "speaker": "할머니",
-      "portrait": "villager_elderly",
-      "text": "쿠키가 남았으면 다른 사람들에게도 나눠주렴. 옆집 소년이 배고프대.",
+      "lineId": "mudcookie_delivery",
+      "speaker": "주민_할머니",
+      "portrait": "villager_grandma_tearful",
+      "text": "어머, 이 냄새는...\n진흙쿠키잖아. 오래됐다, 오래됐어.\n고마워요, 젊은이.",
       "isNG": false,
       "condition": { "questId": "ch1_mudcookie", "state": "Active" },
-      "choices": [
-        {
-          "text": "네, 갖다줄게요.",
-          "nextLineId": null,
-          "flagToSet": "",
-          "questToProgress": "ch1_mudcookie",
-          "condition": null
-        }
-      ]
-    },
-    {
-      "lineId": "mudcookie_done",
-      "speaker": "할머니",
-      "portrait": "villager_elderly",
-      "text": "다 나눠줬어? 착한 아이구나. 이 마을의 은인이야.",
-      "isNG": false,
-      "condition": { "questId": "ch1_mudcookie", "state": "Completed" },
       "choices": null
     }
   ]

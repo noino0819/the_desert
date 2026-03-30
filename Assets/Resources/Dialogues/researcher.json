@@ -1,0 +1,177 @@
+{
+  "npcId": "researcher",
+  "lines": [
+    {
+      "lineId": "greet_initial",
+      "speaker": "연구자",
+      "portrait": "researcher_excited",
+      "text": "맙소사!\n진짜야?! 정말 녹지화 씨앗이 있다고?!\n그럴 수가, 그럴 수가!\n야, 넌 — 진짜 구세주야 구세주!",
+      "isNG": false,
+      "condition": { "questId": "ch4_chem", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "lab_tour",
+      "speaker": "연구자",
+      "portrait": "researcher_sheepish",
+      "text": "하하, 좀 별로지?\n그래도 나름 실험은 잘 되고 있어.\n네가 가져온 씨앗이 어떤 건지 알 수 있을 정도로\n뛰어난 시설은 아니지만.\n일단 내가 분석해볼게. 근데 그 전에 진행하던 실험을 끝내야 하는데.\n좀 도와줄 수 있어?",
+      "isNG": false,
+      "condition": { "questId": "ch4_chem", "state": "Inactive" },
+      "choices": [
+        {
+          "text": "물론이지.",
+          "nextLineId": "quest_accept_a",
+          "flagToSet": "",
+          "questToProgress": "ch4_chem",
+          "condition": null
+        },
+        {
+          "text": "...그러지 뭐.",
+          "nextLineId": "quest_accept_b",
+          "flagToSet": "",
+          "questToProgress": "ch4_chem",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "quest_accept_a",
+      "speaker": "연구자",
+      "portrait": "researcher_happy",
+      "text": "좋아! 화학, 생물, 물리 세 가지 실험이 있어. 순서는 네 마음대로.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "quest_accept_b",
+      "speaker": "연구자",
+      "portrait": "researcher_happy",
+      "text": "좋아! 화학, 생물, 물리 세 가지 실험이 있어. 순서는 네 마음대로.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "turtle_intro",
+      "speaker": "연구자",
+      "portrait": "researcher_proud",
+      "text": "아, 그 전에 얘 소개해줄게.\n내가 만든 과일거북이야.\n등딱지에서 과일이 자라나거든.\n나무는 물을 너무 많이 먹잖아. 생물이면 그게 좀 덜하고, 이동도 되니까.\n신기하지?",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "chem_hint",
+      "speaker": "연구자",
+      "portrait": "researcher_casual",
+      "text": "시약 세 개를 순서대로 섞으면 돼.\n순서가 중요해. 틀리면 터질 수도 있거든.\n뭐, 크게 터지진 않아.",
+      "isNG": false,
+      "condition": { "questId": "ch4_chem", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "chem_done",
+      "speaker": "연구자",
+      "portrait": "researcher_impressed",
+      "text": "오, 잘 하는데! 역시야.",
+      "isNG": false,
+      "condition": { "questId": "ch4_chem", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "bio_hint",
+      "speaker": "연구자",
+      "portrait": "researcher_casual",
+      "text": "과일거북 표본이 필요한데.\n다치게 하면 안 돼. 그냥 등딱지 일부만 살짝 채취하면 되거든.\n걔들이 좀 도망을 잘 다니긴 하는데…",
+      "isNG": false,
+      "condition": { "questId": "ch4_bio", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "phys_hint",
+      "speaker": "연구자",
+      "portrait": "researcher_casual",
+      "text": "발전기가 고장났어. 부품이 세 개 필요한데 — 뿔뿔이 흩어져있어서.\n연구실 어딘가에 있을 거야. 내가 정리를 좀 못하거든.",
+      "isNG": false,
+      "condition": { "questId": "ch4_phys", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "analysis_start",
+      "speaker": "연구자",
+      "portrait": "researcher_focused",
+      "text": "자, 이제 씨앗 한번 볼게.\n음… 성분이 좀 특이한데.\n잠깐…",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "analysis_shock",
+      "speaker": "연구자",
+      "portrait": "researcher_frozen",
+      "text": "이게…",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "analysis_question",
+      "speaker": "연구자",
+      "portrait": "researcher_changed",
+      "text": "야.\n이 씨앗… 어디서 난 거야?",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "정령에게 받았어.",
+          "nextLineId": "analysis_response",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "인공녹지 정부에서.",
+          "nextLineId": "analysis_response",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "왜?",
+          "nextLineId": "analysis_response",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "analysis_response",
+      "speaker": "연구자",
+      "portrait": "researcher_quiet",
+      "text": "그렇구나.\n미안한데, 나 잠깐 혼자 생각할 시간이 필요해.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "block_seed",
+      "speaker": "연구자",
+      "portrait": "researcher_desperate",
+      "text": "잠깐.\n그 씨앗…\n심으면 안 돼.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "truth_attempt",
+      "speaker": "연구자",
+      "portrait": "researcher_dying",
+      "text": "야, 이 씨앗은…\n이건 생명을 살리는 게 아니야.\n이건—",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

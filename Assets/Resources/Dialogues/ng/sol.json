@@ -1,0 +1,81 @@
+{
+  "npcId": "sol",
+  "lines": [
+    {
+      "lineId": "ng_greet",
+      "speaker": "솔라",
+      "portrait": "sola_weary",
+      "text": "외부에서 왔어요?\n요즘은 아무도 안 오는데.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_parents",
+      "speaker": "솔라",
+      "portrait": "sola_sad",
+      "text": "우리 부모가 그랬대요. 서로 사랑했는데\n마을이 갈라지면서 적이 됐다고.\n결국은 다시 만났는데…",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_ask",
+      "speaker": "솔라",
+      "portrait": "sola_neutral",
+      "text": "당신은 왜 여기 온 거예요?",
+      "isNG": true,
+      "condition": null,
+      "choices": [
+        {
+          "text": "할아버지가 한 일을 되돌리러.",
+          "nextLineId": "ng_help",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "늑대 변이체를 처리하러.",
+          "nextLineId": "ng_boss",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "그냥 지나가는 길이야.",
+          "nextLineId": "ng_pass",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "ng_help",
+      "speaker": "솔라",
+      "portrait": "sola_resolved",
+      "text": "늑대가 저 외곽에 있어요.\n우리도 같이 갈게요.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_boss",
+      "speaker": "솔라",
+      "portrait": "sola_neutral",
+      "text": "늑대는 외곽에 있어요.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_pass",
+      "speaker": "솔라",
+      "portrait": "sola_neutral",
+      "text": "그래요.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

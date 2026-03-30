@@ -2,63 +2,12 @@
   "npcId": "villager_2",
   "lines": [
     {
-      "lineId": "greet",
-      "speaker": "소년",
-      "portrait": "villager_boy",
-      "text": "너 누구야? 바깥에서 왔어? 대단하다! 나는 여기서 태어나서 사막 밖은 본 적도 없어.",
-      "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Inactive" },
-      "choices": null
-    },
-    {
-      "lineId": "during_water",
-      "speaker": "소년",
-      "portrait": "villager_boy",
-      "text": "하마한테 가는 거야? 조심해! 진흙을 엄청 뱉는다고... 맞으면 아파!",
-      "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Active" },
-      "choices": null
-    },
-    {
-      "lineId": "water_done",
-      "speaker": "소년",
-      "portrait": "villager_boy",
-      "text": "우와, 진짜 해냈어! 물이 나온다! 나도 커서 너처럼 용감해질 거야!",
-      "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Completed" },
-      "choices": null
-    },
-    {
-      "lineId": "mudcookie_active",
-      "speaker": "소년",
-      "portrait": "villager_boy",
-      "text": "배고파... 혹시 먹을 거 있어?",
+      "lineId": "mudcookie_delivery",
+      "speaker": "주민_아저씨",
+      "portrait": "villager_uncle",
+      "text": "오, 이게 진흙쿠키네!\n솜씨가 있는데.",
       "isNG": false,
       "condition": { "questId": "ch1_mudcookie", "state": "Active" },
-      "choices": [
-        {
-          "text": "진흙쿠키 줄게.",
-          "nextLineId": "mudcookie_receive",
-          "flagToSet": "",
-          "questToProgress": "ch1_mudcookie",
-          "condition": null
-        },
-        {
-          "text": "미안, 아직 없어.",
-          "nextLineId": null,
-          "flagToSet": "",
-          "questToProgress": "",
-          "condition": null
-        }
-      ]
-    },
-    {
-      "lineId": "mudcookie_receive",
-      "speaker": "소년",
-      "portrait": "villager_boy",
-      "text": "고마워! 맛있다... 진흙맛이지만 그래도 맛있어!",
-      "isNG": false,
-      "condition": null,
       "choices": null
     }
   ]

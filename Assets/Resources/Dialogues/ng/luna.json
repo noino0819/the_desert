@@ -1,0 +1,32 @@
+{
+  "npcId": "luna",
+  "lines": [
+    {
+      "lineId": "ng_greet",
+      "speaker": "루네",
+      "portrait": "rune_quiet",
+      "text": "늑대가 이상해졌어요.\n할아버지 때부터 그랬다고 하더라고요.\n갑자기 어느 날부터.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_parents",
+      "speaker": "루네",
+      "portrait": "rune_reflective",
+      "text": "그게 행복한 결말이었는지는 모르겠어요.\n갈라진 동안 너무 많이 잃었으니까요.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_help",
+      "speaker": "루네",
+      "portrait": "rune_determined",
+      "text": "할아버지.\n돕고 싶어요.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

@@ -322,6 +322,9 @@ namespace TheSSand.Dialogue
                 case "saidIllComeBack":
                     GameManager.Instance.SetSaidIllComeBack();
                     break;
+                case "scarfPickedUp":
+                    GameManager.Instance.SetScarfPickedUp();
+                    break;
                 case "scarfGiven":
                     GameManager.Instance.SetScarfGiven();
                     break;

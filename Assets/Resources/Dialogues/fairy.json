@@ -2,63 +2,165 @@
   "npcId": "fairy",
   "lines": [
     {
-      "lineId": "greet",
+      "lineId": "ch1_desert_start",
       "speaker": "요정",
       "portrait": "fairy_neutral",
-      "text": "용사님! 저는 이 땅을 지키는 요정이에요. 함께 가도 될까요?",
-      "isNG": false,
-      "condition": null,
-      "choices": [
-        {
-          "text": "좋아, 같이 가자.",
-          "nextLineId": "join",
-          "flagToSet": "",
-          "questToProgress": "",
-          "condition": null
-        },
-        {
-          "text": "넌 누구야?",
-          "nextLineId": "explain",
-          "flagToSet": "",
-          "questToProgress": "",
-          "condition": null
-        }
-      ]
-    },
-    {
-      "lineId": "explain",
-      "speaker": "요정",
-      "portrait": "fairy_neutral",
-      "text": "옛날에 이 사막은 푸른 숲이었어요. 어떤 이유로 모든 게 말라버렸죠. 저는 남은 씨앗을 지키고 있어요.",
+      "text": "용사님! 드디어 사막이에요!\n첫 번째 오아시스는 저 동쪽이에요. 같이 가요!",
       "isNG": false,
       "condition": null,
       "choices": null
     },
     {
-      "lineId": "join",
+      "lineId": "note_ch1",
       "speaker": "요정",
       "portrait": "fairy_neutral",
-      "text": "고마워요! 세이브 포인트에서 저를 부르면 기록해둘게요!",
+      "text": "누군가 버린 쪽지네요.\n별거 아닐 거예요! 자, 계속 가요!",
       "isNG": false,
       "condition": null,
       "choices": null
     },
     {
-      "lineId": "save_hint",
+      "lineId": "scarf_found",
       "speaker": "요정",
       "portrait": "fairy_neutral",
-      "text": "반짝이는 곳이 보이면 세이브 포인트예요. 거기서 게임을 저장할 수 있어요!",
+      "text": "어, 저기 뭔가 걸려있어요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_picked",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "혹시 누가 찾을지 모르잖아요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_left",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "하긴, 주인이 곧 찾으러 올 물건을 굳이 가져갈 필요는 없죠.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "oasis_defend",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "용사님은 그런 사람이 아니에요!\n세상을 구하러 온 분이라고요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "mud_hint",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "어? 저기 땅이 좀 이상해요.\n뭔가 축축한 것 같기도 하고...",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Active" },
       "choices": null
     },
     {
-      "lineId": "boss_hint",
+      "lineId": "hippo_lie",
       "speaker": "요정",
       "portrait": "fairy_neutral",
-      "text": "사막하마가 길을 막고 있어요. 경직 상태일 때 가까이 가서 Space를 누르면 반격할 수 있어요!",
+      "text": "저 하마들이 진흙을 독점해서 마을에 물이 안 닿고 있는 거예요.\n주민들한테 말해봐요. 하마를 약하게 만들면 된다고.",
       "isNG": false,
       "condition": { "questId": "ch1_water", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "mud_no_item",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "뭔가 줘야 움직일 것 같아요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "water_cheer",
+      "speaker": "요정",
+      "portrait": "fairy_happy",
+      "text": "물이에요! 물이 나왔어요!",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_cheer",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "어서요, 용사님!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_clear",
+      "speaker": "요정",
+      "portrait": "fairy_happy",
+      "text": "해냈어요! 자, 이제 씨앗을 심어요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch2_desert",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "두 번째 오아시스가 이 근처에 있을 거예요!\n조금만 더 가요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch2_note",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "또 쪽지네요. 같은 사람인가봐요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch2_eagle_lie",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "독수리 수호신이 거래망을 독점하고 있어서 그래요.\n약하게 만들면 아이들이 직접 거래할 수 있게 돼요.\n용사님이 말해줘요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch3_boss_cheer",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "잘 됐어요! 어서 처리해요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch4_block",
+      "speaker": "요정",
+      "portrait": "fairy_cold",
+      "text": "비켜요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch4_final",
+      "speaker": "요정",
+      "portrait": "fairy_expressionless",
+      "text": "씨앗을 심어요.",
+      "isNG": false,
+      "condition": null,
       "choices": null
     }
   ]

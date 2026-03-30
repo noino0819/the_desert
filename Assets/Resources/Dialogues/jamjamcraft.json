@@ -1,0 +1,269 @@
+{
+  "npcId": "jamjamcraft",
+  "lines": [
+    {
+      "lineId": "greet_initial",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_defiant",
+      "text": "야, 거기.\n어른이 여기 왜 왔어?",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "greet_mock",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_frown",
+      "text": "뭐야, 혼자 중얼중얼하고 있어?\n이상한 사람이네.",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "greet_reject",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_laugh",
+      "text": "푸하, 사막이 녹지로 바뀐다고?\n진짜 웃기는 소리 하고 있네.\n어른들은 맨날 그런 말 하더라.\n뭔가 시키려고.\n안 속아.",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "quest_offer",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_scheming",
+      "text": "…일을 시켜달라고?\n오, 그래?\n그러면 말이지—\n먹을 거 구해와봐. 하루치.\n이 사막에서 그게 얼마나 힘든 건지 알아?\n할 수 있으면 해봐. 어디!",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Inactive" },
+      "choices": [
+        {
+          "text": "구해올게.",
+          "nextLineId": "food_accept_a",
+          "flagToSet": "",
+          "questToProgress": "ch2_food",
+          "condition": null
+        },
+        {
+          "text": "...알겠어.",
+          "nextLineId": "food_accept_b",
+          "flagToSet": "",
+          "questToProgress": "ch2_food",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "food_accept_a",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_arms_crossed",
+      "text": "흥. 말은 잘 하네.\n두고 보자고.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "food_accept_b",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_turning",
+      "text": "뭐, 해보든지. 기대는 안 해.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "eagle_explain",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_proud",
+      "text": "당연하지!\n어린아이만으로 살 수 없다는 거 누구보다 내가 잘 알거든.\n그러니까 내가 생각해낸 거야.\n우리 위치 알려주면 안 되고, 우리가 직접 가지도 못하잖아.\n그러니까 독수리로 비밀 장소에서 거래하는 거지.\n어때, 기발하지?\n내가 다 생각해낸 거야.",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_setup",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_uncertain",
+      "text": "용사 아저씨.\n독수리가 요즘 이상해.\n자꾸 개체수가 줄고 있거든.\n내가 뭔가 잘못한 건지…\n아무튼 이상하다고.",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_doubt",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_frown",
+      "text": "독수리가 그랬다고?\n...독수리가 왜 그런 짓을 해.\n근데…\n용사 아저씨가 틀릴 것 같지는 않아.\n여기까지 혼자 온 사람이잖아.",
+      "isNG": false,
+      "condition": { "questId": "ch2_food", "state": "Completed" },
+      "choices": [
+        {
+          "text": "내가 알아봤어. 확실해.",
+          "nextLineId": "boss_trust",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "믿기 싫으면 됐어.",
+          "nextLineId": "boss_force",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "boss_trust",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_resolved",
+      "text": "...알겠어.\n믿을게.\n틀리면 안 되는데.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "boss_force",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_stiff",
+      "text": "...그래. 알겠어.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "bandit_fight",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_shaking",
+      "text": "싸울 수 있어?",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "같이 싸우자.",
+          "nextLineId": "bandit_together",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "bandit_together",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_forced_calm",
+      "text": "...뭐야, 별거 아니네.\n너도 꽤 하잖아.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "farewell",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_leaning",
+      "text": "가는 거야?",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "꼭 돌아올게.",
+          "nextLineId": "farewell_promise",
+          "flagToSet": "saidIllComeBack",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "잘 있어.",
+          "nextLineId": "farewell_bye",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "(말없이 간다)",
+          "nextLineId": "farewell_silent",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "farewell_promise",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_looking_down",
+      "text": "...어른들은 다 그 말 하더라.\n근데 아저씨는.\n믿어볼게. 이번 한 번만.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "farewell_bye",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_nod",
+      "text": "그래. 잘 가.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "farewell_silent",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_stare",
+      "text": "",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_event",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_shocked",
+      "text": "...이거 어디서 났어.",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "사막에서 주웠어. 네 거 맞지?",
+          "nextLineId": "scarf_give",
+          "flagToSet": "scarfGiven",
+          "questToProgress": "ch2_scarfPass",
+          "condition": null
+        },
+        {
+          "text": "아니면 됐어.",
+          "nextLineId": "scarf_decline",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "scarf_give",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_head_down",
+      "text": "...엄마 거야.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_give_2",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_turning_away",
+      "text": "뭐, 고마워.\n잃어버린 지 오래됐는데.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_decline",
+      "speaker": "잼잼크래프트",
+      "portrait": "jamjamcraft_neutral",
+      "text": "...",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

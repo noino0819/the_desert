@@ -1,0 +1,14 @@
+{
+  "npcId": "fairy",
+  "lines": [
+    {
+      "lineId": "ng_note",
+      "speaker": "",
+      "portrait": "",
+      "text": "",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

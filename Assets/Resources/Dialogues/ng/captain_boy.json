@@ -1,0 +1,65 @@
+{
+  "npcId": "captain_boy",
+  "lines": [
+    {
+      "lineId": "ng_greet",
+      "speaker": "장",
+      "portrait": "jang_tired",
+      "text": "외부인이야?\n오랜만이네.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_hippo",
+      "speaker": "장",
+      "portrait": "jang_distant",
+      "text": "사막하마 알아?\n예전에 있었대. 이 마을 구세주였다고.\n어느 날 갑자기 사라졌어.\n할아버지 말로는 용사가 왔다 간 뒤부터 이상해졌다고 했는데.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_ask",
+      "speaker": "장",
+      "portrait": "jang_tired",
+      "text": "여기까지 온 이유가 뭐야?",
+      "isNG": true,
+      "condition": null,
+      "choices": [
+        {
+          "text": "되돌리러 왔어.",
+          "nextLineId": "ng_hope",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "그냥 지나가는 길이야.",
+          "nextLineId": "ng_pass",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "ng_hope",
+      "speaker": "장",
+      "portrait": "jang_tired",
+      "text": "뭘 되돌리려고.\n어차피 이미 된 일이지만.\n…그래도 뭐. 하고 싶으면 해봐.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_pass",
+      "speaker": "장",
+      "portrait": "jang_neutral",
+      "text": "그래.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

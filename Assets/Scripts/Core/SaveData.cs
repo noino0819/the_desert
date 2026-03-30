@@ -29,6 +29,7 @@ namespace TheSSand.Core
 
         // Ed.2 조건 플래그
         public bool mudCookieDelivered; // Ch.1 진흙쿠키 배달 완료
+        public bool scarfPickedUp;      // 스카프 획득 여부
         public bool scarfGiven;         // Ch.1 스카프 전달 완료
         public bool ch2ChildrenAlive;   // Ch.2 아이들 생존
         public bool saidIllComeBack;    // Ch.2 "꼭 돌아올게" 선택

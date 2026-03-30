@@ -2,34 +2,32 @@
   "npcId": "villager_3",
   "lines": [
     {
-      "lineId": "greet",
-      "speaker": "아저씨",
-      "portrait": "villager_man",
-      "text": "...이방인이군. 여긴 물 사정이 안 좋아. 오래 있을 생각이면 도움이라도 줘.",
+      "lineId": "mudcookie_delivery",
+      "speaker": "주민_꼬마",
+      "portrait": "villager_kid",
+      "text": "와! 진흙쿠키다!\n엄마! 진흙쿠키 왔어!",
       "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Inactive" },
+      "condition": { "questId": "ch1_mudcookie", "state": "Active" },
       "choices": null
     },
     {
-      "lineId": "during_water",
-      "speaker": "아저씨",
-      "portrait": "villager_man",
-      "text": "사막 동쪽 끝에 하마가 있어. 그 녀석이 물을 막고 있지. 진흙을 좋아한다던데...",
+      "lineId": "scarf_ask",
+      "speaker": "주민_꼬마",
+      "portrait": "villager_kid",
+      "text": "저기요, 아저씨!\n혹시… 그 스카프, 어디서 났어요?",
       "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Active" },
-      "choices": null
-    },
-    {
-      "lineId": "water_done",
-      "speaker": "아저씨",
-      "portrait": "villager_man",
-      "text": "물이 돌아왔어. 고맙다. ...그나저나 내 딸이 예전에 쓰던 스카프가 있는데.",
-      "isNG": false,
-      "condition": { "questId": "ch1_water", "state": "Completed" },
+      "condition": null,
       "choices": [
         {
-          "text": "스카프요?",
-          "nextLineId": "scarf_hint",
+          "text": "스카프를 보여준다.",
+          "nextLineId": "scarf_show",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "그냥 사막에서 주웠어.",
+          "nextLineId": "scarf_dismiss",
           "flagToSet": "",
           "questToProgress": "",
           "condition": null
@@ -37,29 +35,54 @@
       ]
     },
     {
-      "lineId": "scarf_hint",
-      "speaker": "아저씨",
-      "portrait": "villager_man",
-      "text": "사막을 건너다 보면 추운 밤이 올 거야. 이 스카프가 도움이 될 거다. 가져가.",
+      "lineId": "scarf_show",
+      "speaker": "주민_꼬마",
+      "portrait": "villager_kid_wide_eyes",
+      "text": "이거… 우리 엄마 거예요.\n잼잼크래프트한테 전해달라고 했을 거예요. 저희 오빠.\n엄마가 사막 나갔다가 잃어버렸는데…",
       "isNG": false,
       "condition": null,
       "choices": [
         {
-          "text": "감사합니다.",
-          "nextLineId": null,
+          "text": "스카프를 건네준다.",
+          "nextLineId": "scarf_give",
           "flagToSet": "scarfGiven",
-          "questToProgress": "ch1_scarf",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "가지고 있겠다.",
+          "nextLineId": "scarf_keep",
+          "flagToSet": "",
+          "questToProgress": "",
           "condition": null
         }
       ]
     },
     {
-      "lineId": "after_scarf",
-      "speaker": "아저씨",
-      "portrait": "villager_man",
-      "text": "길 조심해라. 사막은 낮에도, 밤에도 위험하니까.",
+      "lineId": "scarf_give",
+      "speaker": "주민_꼬마",
+      "portrait": "villager_kid_quiet",
+      "text": "고마워요.",
       "isNG": false,
-      "condition": { "questId": "ch1_scarf", "state": "Completed" },
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_keep",
+      "speaker": "주민_꼬마",
+      "portrait": "villager_kid",
+      "text": "...",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "scarf_dismiss",
+      "speaker": "주민_꼬마",
+      "portrait": "villager_kid",
+      "text": "아... 그래요.",
+      "isNG": false,
+      "condition": null,
       "choices": null
     }
   ]

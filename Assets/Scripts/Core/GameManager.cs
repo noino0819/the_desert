@@ -112,6 +112,12 @@ namespace TheSSand.Core
             OnFlagChanged?.Invoke("mudCookieDelivered");
         }
 
+        public void SetScarfPickedUp()
+        {
+            CurrentSave.scarfPickedUp = true;
+            OnFlagChanged?.Invoke("scarfPickedUp");
+        }
+
         public void SetScarfGiven()
         {
             CurrentSave.scarfGiven = true;
