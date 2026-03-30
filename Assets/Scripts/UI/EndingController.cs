@@ -181,7 +181,16 @@ namespace TheSSand.UI
         IEnumerator CreditsRoutine()
         {
             yield return new WaitForSeconds(2f);
-            SceneTransitionManager.Instance?.LoadScene("SCN_TitleMenu");
+
+            var creditsUI = FindFirstObjectByType<CreditsUI>(FindObjectsInactive.Include);
+            if (creditsUI != null)
+            {
+                creditsUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                SceneTransitionManager.Instance?.LoadScene("SCN_TitleMenu");
+            }
         }
     }
 }

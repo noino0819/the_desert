@@ -179,6 +179,9 @@ namespace TheSSand.Audio
         public void PauseBGM() => _activeBgmSource.Pause();
         public void ResumeBGM() => _activeBgmSource.UnPause();
 
+        public void SetBGMVolume(float value) => BgmVolume = value;
+        public void SetSFXVolume(float value) => SfxVolume = value;
+
         #endregion
 
         #region SFX
