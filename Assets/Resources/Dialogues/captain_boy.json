@@ -1,0 +1,100 @@
+{
+  "npcId": "captain_boy",
+  "lines": [
+    {
+      "lineId": "greet_initial",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "...누구야, 너. 여기 어떻게 온 거야?",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "greet_initial_2",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_angry",
+      "text": "외부인은 함부로 들어올 수 없어. 하지만... 물이 필요하긴 해.",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "quest_offer",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_worried",
+      "text": "우리 하마가 요즘 물을 잘 안 내놔. 네가 도와줄 수 있겠어?",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Inactive" },
+      "choices": [
+        {
+          "text": "도와줄게!",
+          "nextLineId": "quest_accept",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "왜 내가?",
+          "nextLineId": "quest_reluctant",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "quest_accept",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "고마워. 하마가 좋아하는 진흙을 찾아오면 될 거야. 마을 밖 어딘가에 매장지가 있을 거야.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "quest_reluctant",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_annoyed",
+      "text": "...우리도 네가 필요하고, 너도 물이 필요하잖아. 어차피 같은 처지야.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "during_quest",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "진흙 매장지를 찾았어? 아직이면 마을 밖을 좀 더 둘러봐.",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "quest_complete",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_surprised",
+      "text": "...정말 해냈어! 하마가 물을 내놓기 시작했어!",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Completed" },
+      "choices": null
+    },
+    {
+      "lineId": "quest_complete_2",
+      "speaker": "대장소년",
+      "portrait": "captain_boy_neutral",
+      "text": "고마워, 용사. 음... 혹시 진흙쿠키 배달도 좀 도와줄 수 있어?",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Completed" },
+      "choices": [
+        {
+          "text": "좋아, 도와줄게.",
+          "nextLineId": null,
+          "flagToSet": "",
+          "questToProgress": "ch1_mudcookie",
+          "condition": null
+        }
+      ]
+    }
+  ]
+}
