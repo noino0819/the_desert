@@ -118,10 +118,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1376
-        height: 768
+        width: 204
+        height: 205
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,11 +134,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: grandfather_portraits_1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 204
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac58ddf51a2843579cc43f06c692412
+      internalID: 1792345428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandfather_portraits_2
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 204
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21760488fc1474f0eb6feb5eec974a4c
+      internalID: -1444169187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandfather_portraits_3
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 204
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2dd69a2176d7499091e9152cb854f78
+      internalID: 1077039970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandfather_portraits_4
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 0
+        width: 204
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ffc9ab9ec85e40e1b46505550eef2b1
+      internalID: 858545183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 92bb1e0f2b1b948d3be6a1cb00d6f22f
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +234,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":204.0,"y":205.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       grandfather_portraits_0: -2211408962861508436
+      grandfather_portraits_1: 1792345428
+      grandfather_portraits_2: -1444169187
+      grandfather_portraits_3: 1077039970
+      grandfather_portraits_4: 858545183
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

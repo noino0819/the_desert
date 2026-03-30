@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8be7f6fe6cb224ae1a9f57540529f4d2
+guid: 552cac3e674b949e2b0a44463294f09d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6102193440260410332
-    second: fairy_portraits_0
+      213: 8898774914731014081
+    second: bg_desert_sky_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,111 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fairy_portraits_0
+      name: bg_desert_sky_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 204
-        height: 205
+        width: 1376
+        height: 768
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cdbc0756a985fa450800000000000000
-      internalID: 6102193440260410332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fairy_portraits_1
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 0
-        width: 204
-        height: 205
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdbc7832d13e843c989f20faa9af9274
-      internalID: -1495778178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fairy_portraits_2
-      rect:
-        serializedVersion: 2
-        x: 408
-        y: 0
-        width: 204
-        height: 205
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: adf3737265c2d4de7bf053eda80d5cec
-      internalID: -536331283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fairy_portraits_3
-      rect:
-        serializedVersion: 2
-        x: 612
-        y: 0
-        width: 204
-        height: 205
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c732b850b8934d08a40b9199cd97828
-      internalID: 621426815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fairy_portraits_4
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 0
-        width: 204
-        height: 205
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3336295357543464fb2ebc5214ee3757
-      internalID: -684127936
+      spriteID: 1c7f2b023acce7b70800000000000000
+      internalID: 8898774914731014081
       vertices: []
       indices: 
       edges: []
@@ -226,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b61974b54adda4dd6a6e8647f27145f4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -234,15 +146,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":204.0,"y":205.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      fairy_portraits_0: 6102193440260410332
-      fairy_portraits_1: -1495778178
-      fairy_portraits_2: -536331283
-      fairy_portraits_3: 621426815
-      fairy_portraits_4: -684127936
+      bg_desert_sky_0: 8898774914731014081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -118,10 +118,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1376
-        height: 768
+        width: 170
+        height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,11 +134,121 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: captain_boy_portraits_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49301723b811749bf8df16706edc6195
+      internalID: 1424853178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain_boy_portraits_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086f3615236ed4c748b6ad3adca50bf4
+      internalID: -1861195781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain_boy_portraits_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb3ed10d5c554c8b943831d59fa55f0
+      internalID: 1224583397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain_boy_portraits_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaae884bce011454487270f62d77e665
+      internalID: -92383976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: captain_boy_portraits_5
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 0
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2b9a04c4b4e4d12870c12f08dcccd9
+      internalID: 1327800514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e2a4446e9079849de912ef82d7e8f01c
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +256,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":170.0,"y":170.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       captain_boy_portraits_0: 4036852639196349212
+      captain_boy_portraits_1: 1424853178
+      captain_boy_portraits_2: -1861195781
+      captain_boy_portraits_3: 1224583397
+      captain_boy_portraits_4: -92383976
+      captain_boy_portraits_5: 1327800514
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
