@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace TheSSand.Camera
+namespace TheSSand.CameraSystem
 {
     /// <summary>
     /// 범용 카메라 컨트롤러 — 플레이어 추적, 줌, 셰이크, 포커스, 바운드
