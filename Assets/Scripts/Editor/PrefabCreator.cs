@@ -12,6 +12,7 @@ namespace TheSSand.Editor
         static void CreateAllPrefabs()
         {
             EnsureFolders();
+            CreateBootstrapperPrefab();
             CreatePlayerPrefab();
             CreateNPCPrefabs();
             CreateBossPrefab();
@@ -22,6 +23,33 @@ namespace TheSSand.Editor
             AssetDatabase.Refresh();
             Debug.Log("[Prefab] 전체 프리팹 생성 완료!");
             EditorUtility.DisplayDialog("완료", "모든 프리팹이 생성되었습니다.", "확인");
+        }
+
+        [MenuItem("The SSand/프리팹 생성/GameBootstrapper")]
+        static void CreateBootstrapperPrefab()
+        {
+            var obj = new GameObject("GameBootstrapper");
+            obj.AddComponent<Core.GameManager>();
+            obj.AddComponent<Core.SaveManager>();
+
+            var transitionObj = new GameObject("SceneTransitionManager");
+            transitionObj.transform.SetParent(obj.transform);
+            transitionObj.AddComponent<Scene.SceneTransitionManager>();
+
+            var dialogueObj = new GameObject("DialogueManager");
+            dialogueObj.transform.SetParent(obj.transform);
+            dialogueObj.AddComponent<Dialogue.DialogueManager>();
+
+            var questObj = new GameObject("QuestManager");
+            questObj.transform.SetParent(obj.transform);
+            questObj.AddComponent<Quest.QuestManager>();
+
+            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                AssetDatabase.CreateFolder("Assets", "Resources");
+
+            PrefabUtility.SaveAsPrefabAsset(obj, "Assets/Resources/GameBootstrapper.prefab");
+            Object.DestroyImmediate(obj);
+            Debug.Log("[Prefab] GameBootstrapper 프리팹 생성 → Assets/Resources/GameBootstrapper.prefab");
         }
 
         static void EnsureFolders()

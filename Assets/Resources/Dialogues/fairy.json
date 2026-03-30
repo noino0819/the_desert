@@ -1,0 +1,65 @@
+{
+  "npcId": "fairy",
+  "lines": [
+    {
+      "lineId": "greet",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "용사님! 저는 이 땅을 지키는 요정이에요. 함께 가도 될까요?",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "좋아, 같이 가자.",
+          "nextLineId": "join",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "넌 누구야?",
+          "nextLineId": "explain",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "explain",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "옛날에 이 사막은 푸른 숲이었어요. 어떤 이유로 모든 게 말라버렸죠. 저는 남은 씨앗을 지키고 있어요.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "join",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "고마워요! 세이브 포인트에서 저를 부르면 기록해둘게요!",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "save_hint",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "반짝이는 곳이 보이면 세이브 포인트예요. 거기서 게임을 저장할 수 있어요!",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "boss_hint",
+      "speaker": "요정",
+      "portrait": "fairy_neutral",
+      "text": "사막하마가 길을 막고 있어요. 경직 상태일 때 가까이 가서 Space를 누르면 반격할 수 있어요!",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Active" },
+      "choices": null
+    }
+  ]
+}

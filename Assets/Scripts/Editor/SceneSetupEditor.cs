@@ -23,9 +23,32 @@ namespace TheSSand.Editor
             CreateCh1DesertScene();
             CreateCh1OasisScene();
             CreateCh1BossScene();
+            RegisterScenesInBuildSettings();
 
-            Debug.Log("[SceneSetup] 5개 씬 생성 완료!");
-            EditorUtility.DisplayDialog("완료", "5개 씬이 생성되었습니다.\nBuild Settings에 추가해주세요.", "확인");
+            Debug.Log("[SceneSetup] 5개 씬 생성 + Build Settings 등록 완료!");
+            EditorUtility.DisplayDialog("완료", "5개 씬이 생성되고 Build Settings에 자동 등록되었습니다.", "확인");
+        }
+
+        [MenuItem("The SSand/Build Settings 씬 등록", false, 1)]
+        static void RegisterScenesInBuildSettings()
+        {
+            string[] sceneOrder = {
+                "SCN_TitleMenu",
+                "SCN_Prologue",
+                "SCN_Ch1_Desert",
+                "SCN_Ch1_Oasis",
+                "SCN_Ch1_Boss"
+            };
+
+            var buildScenes = new EditorBuildSettingsScene[sceneOrder.Length];
+            for (int i = 0; i < sceneOrder.Length; i++)
+            {
+                string path = ScenesPath + sceneOrder[i] + ".unity";
+                buildScenes[i] = new EditorBuildSettingsScene(path, true);
+            }
+
+            EditorBuildSettings.scenes = buildScenes;
+            Debug.Log($"[SceneSetup] Build Settings에 {sceneOrder.Length}개 씬 등록 완료");
         }
 
         #region 타이틀
@@ -202,6 +225,7 @@ namespace TheSSand.Editor
             levelCtrl.AddComponent<Level.DesertLevelController>();
 
             CreateDialogueUI(scene);
+            CreateInGameHUD();
 
             EditorSceneManager.SaveScene(scene, ScenesPath + "SCN_Ch1_Desert.unity");
             Debug.Log("[SceneSetup] SCN_Ch1_Desert 생성");
@@ -280,6 +304,7 @@ namespace TheSSand.Editor
             oasisCtrl.AddComponent<Level.OasisController>();
 
             CreateDialogueUI(scene);
+            CreateInGameHUD();
 
             EditorSceneManager.SaveScene(scene, ScenesPath + "SCN_Ch1_Oasis.unity");
             Debug.Log("[SceneSetup] SCN_Ch1_Oasis 생성");
@@ -619,6 +644,87 @@ namespace TheSSand.Editor
         static Sprite LoadSprite(string path)
         {
             return AssetDatabase.LoadAssetAtPath<Sprite>(path);
+        }
+
+        static void CreateInGameHUD()
+        {
+            var hudCanvas = CreateCanvas("HUDCanvas");
+            hudCanvas.sortingOrder = 150;
+
+            var heartPanel = new GameObject("HeartPanel");
+            heartPanel.transform.SetParent(hudCanvas.transform, false);
+            var heartRect = heartPanel.AddComponent<RectTransform>();
+            heartRect.anchorMin = new Vector2(0, 1);
+            heartRect.anchorMax = new Vector2(0, 1);
+            heartRect.pivot = new Vector2(0, 1);
+            heartRect.anchoredPosition = new Vector2(20, -20);
+            heartRect.sizeDelta = new Vector2(200, 50);
+
+            var hlg = heartPanel.AddComponent<HorizontalLayoutGroup>();
+            hlg.spacing = 8;
+            hlg.childAlignment = TextAnchor.MiddleLeft;
+            hlg.childControlWidth = false;
+            hlg.childControlHeight = false;
+
+            for (int i = 0; i < 3; i++)
+            {
+                var heart = new GameObject($"Heart_{i}");
+                heart.transform.SetParent(heartPanel.transform, false);
+                var hImg = heart.AddComponent<Image>();
+                hImg.color = Color.red;
+                var hRect = heart.GetComponent<RectTransform>();
+                hRect.sizeDelta = new Vector2(40, 40);
+            }
+
+            var goldPanel = new GameObject("GoldPanel");
+            goldPanel.transform.SetParent(hudCanvas.transform, false);
+            var goldRect = goldPanel.AddComponent<RectTransform>();
+            goldRect.anchorMin = new Vector2(0, 1);
+            goldRect.anchorMax = new Vector2(0, 1);
+            goldRect.pivot = new Vector2(0, 1);
+            goldRect.anchoredPosition = new Vector2(20, -70);
+            goldRect.sizeDelta = new Vector2(200, 40);
+
+            var coinIcon = new GameObject("CoinIcon");
+            coinIcon.transform.SetParent(goldPanel.transform, false);
+            var coinImg = coinIcon.AddComponent<Image>();
+            coinImg.color = new Color(1f, 0.85f, 0f);
+            var coinRect = coinIcon.GetComponent<RectTransform>();
+            coinRect.anchorMin = new Vector2(0, 0.5f);
+            coinRect.anchorMax = new Vector2(0, 0.5f);
+            coinRect.pivot = new Vector2(0, 0.5f);
+            coinRect.anchoredPosition = Vector2.zero;
+            coinRect.sizeDelta = new Vector2(30, 30);
+
+            var goldText = CreateTMPText(goldPanel.transform, "GoldText", "0", 24, TextAlignmentOptions.Left);
+            goldText.color = Color.white;
+            goldText.rectTransform.anchorMin = new Vector2(0, 0);
+            goldText.rectTransform.anchorMax = new Vector2(1, 1);
+            goldText.rectTransform.offsetMin = new Vector2(40, 0);
+            goldText.rectTransform.offsetMax = Vector2.zero;
+
+            var locationText = CreateTMPText(hudCanvas.transform, "LocationText", "", 20, TextAlignmentOptions.Center);
+            locationText.color = new Color(1, 1, 1, 0.8f);
+            locationText.rectTransform.anchorMin = new Vector2(0.3f, 0.92f);
+            locationText.rectTransform.anchorMax = new Vector2(0.7f, 0.98f);
+
+            var interactPrompt = new GameObject("InteractPrompt");
+            interactPrompt.transform.SetParent(hudCanvas.transform, false);
+            var ipRect = interactPrompt.AddComponent<RectTransform>();
+            ipRect.anchorMin = new Vector2(0.5f, 0.15f);
+            ipRect.anchorMax = new Vector2(0.5f, 0.15f);
+            ipRect.sizeDelta = new Vector2(150, 40);
+            interactPrompt.AddComponent<Image>().color = new Color(0, 0, 0, 0.6f);
+            var ipText = CreateTMPText(interactPrompt.transform, "PromptLabel", "E  상호작용",
+                18, TextAlignmentOptions.Center);
+            ipText.color = Color.white;
+            ipText.rectTransform.anchorMin = Vector2.zero;
+            ipText.rectTransform.anchorMax = Vector2.one;
+            ipText.rectTransform.offsetMin = Vector2.zero;
+            ipText.rectTransform.offsetMax = Vector2.zero;
+            interactPrompt.SetActive(false);
+
+            var hudCtrl = hudCanvas.gameObject.AddComponent<UI.InGameHUD>();
         }
 
         #endregion

@@ -1,0 +1,66 @@
+{
+  "npcId": "villager_3",
+  "lines": [
+    {
+      "lineId": "greet",
+      "speaker": "아저씨",
+      "portrait": "villager_man",
+      "text": "...이방인이군. 여긴 물 사정이 안 좋아. 오래 있을 생각이면 도움이라도 줘.",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Inactive" },
+      "choices": null
+    },
+    {
+      "lineId": "during_water",
+      "speaker": "아저씨",
+      "portrait": "villager_man",
+      "text": "사막 동쪽 끝에 하마가 있어. 그 녀석이 물을 막고 있지. 진흙을 좋아한다던데...",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Active" },
+      "choices": null
+    },
+    {
+      "lineId": "water_done",
+      "speaker": "아저씨",
+      "portrait": "villager_man",
+      "text": "물이 돌아왔어. 고맙다. ...그나저나 내 딸이 예전에 쓰던 스카프가 있는데.",
+      "isNG": false,
+      "condition": { "questId": "ch1_water", "state": "Completed" },
+      "choices": [
+        {
+          "text": "스카프요?",
+          "nextLineId": "scarf_hint",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "scarf_hint",
+      "speaker": "아저씨",
+      "portrait": "villager_man",
+      "text": "사막을 건너다 보면 추운 밤이 올 거야. 이 스카프가 도움이 될 거다. 가져가.",
+      "isNG": false,
+      "condition": null,
+      "choices": [
+        {
+          "text": "감사합니다.",
+          "nextLineId": null,
+          "flagToSet": "scarfGiven",
+          "questToProgress": "ch1_scarf",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "after_scarf",
+      "speaker": "아저씨",
+      "portrait": "villager_man",
+      "text": "길 조심해라. 사막은 낮에도, 밤에도 위험하니까.",
+      "isNG": false,
+      "condition": { "questId": "ch1_scarf", "state": "Completed" },
+      "choices": null
+    }
+  ]
+}

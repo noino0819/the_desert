@@ -1,0 +1,25 @@
+{
+  "quests": [
+    {
+      "questId": "ch1_water",
+      "questName": "물 문제 해결",
+      "description": "사막하마를 물리쳐 오아시스에 물이 흐르게 하자.",
+      "goal": 1,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch1_mudcookie",
+      "questName": "진흙쿠키 배달",
+      "description": "할머니가 준 진흙쿠키를 마을 주민 3명에게 나눠주자.",
+      "goal": 3,
+      "flagsOnComplete": ["mudCookieDelivered"]
+    },
+    {
+      "questId": "ch1_scarf",
+      "questName": "스카프 전달",
+      "description": "아저씨에게서 스카프를 받아 여행을 준비하자.",
+      "goal": 1,
+      "flagsOnComplete": ["scarfGiven"]
+    }
+  ]
+}
