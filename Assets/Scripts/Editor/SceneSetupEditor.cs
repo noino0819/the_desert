@@ -444,7 +444,7 @@ namespace TheSSand.Editor
             CreateDesertScene("SCN_Ch2_Desert", new Color(0.95f, 0.65f, 0.35f),
                 "BGM_Ch2_Desert", "SCN_Ch2_Oasis");
             CreateOasisScene("SCN_Ch2_Oasis", new Color(0.45f, 0.75f, 0.55f),
-                "잼잼크래프트", "SCN_Ch2_Boss");
+                "잼잼크래프트", "SCN_Ch2_Boss", typeof(Level.Ch2OasisController));
             CreateBossScene("SCN_Ch2_Boss", "독수리", new Color(0.55f, 0.75f, 0.95f),
                 typeof(Boss.BossEagle), typeof(Boss.Ch2BossController), "SCN_Ch3_Desert");
         }
@@ -455,7 +455,7 @@ namespace TheSSand.Editor
             CreateDesertScene("SCN_Ch3_Desert", new Color(0.6f, 0.4f, 0.65f),
                 "BGM_Ch3_Desert", "SCN_Ch3_Oasis");
             CreateOasisScene("SCN_Ch3_Oasis", new Color(0.5f, 0.6f, 0.55f),
-                "솔", "SCN_Ch3_Boss");
+                "솔", "SCN_Ch3_Boss", typeof(Level.Ch3OasisController));
             CreateBossScene("SCN_Ch3_Boss", "늑대", new Color(0.25f, 0.2f, 0.35f),
                 typeof(Boss.BossWolf), typeof(Boss.Ch3BossController), "SCN_Ch4_Desert");
         }
@@ -466,7 +466,7 @@ namespace TheSSand.Editor
             CreateDesertScene("SCN_Ch4_Desert", new Color(0.15f, 0.18f, 0.3f),
                 "BGM_Ch4_Desert", "SCN_Ch4_Oasis");
             CreateOasisScene("SCN_Ch4_Oasis", new Color(0.3f, 0.35f, 0.45f),
-                "연구자", "SCN_Ch4_Boss");
+                "연구자", "SCN_Ch4_Boss", typeof(Level.Ch4OasisController));
             CreateBossScene("SCN_Ch4_Boss", "과일거북", new Color(0.2f, 0.25f, 0.35f),
                 typeof(Boss.BossTurtle), typeof(Boss.Ch4BossController), "SCN_Ending");
         }
@@ -551,6 +551,7 @@ namespace TheSSand.Editor
             cam.orthographicSize = 5;
             cam.backgroundColor = skyColor;
             camObj.tag = "MainCamera";
+            camObj.AddComponent<CameraSystem.CameraController>();
 
             var ground = CreateTiledGround("Ground",
                 LoadSprite($"{ArtPath}Tilesets/tileset_desert.png"),
@@ -566,17 +567,29 @@ namespace TheSSand.Editor
             exitCol.size = new Vector2(2, 10);
             exitTrigger.AddComponent<Level.SceneTransitionTrigger>();
 
+            for (int i = 0; i < 3; i++)
+            {
+                var cp = new GameObject($"Checkpoint_{i}");
+                cp.transform.position = new Vector3(20 + i * 25, -1.5f, 0);
+                var cpCol = cp.AddComponent<BoxCollider2D>();
+                cpCol.isTrigger = true;
+                cpCol.size = new Vector2(1f, 2f);
+                cp.AddComponent<Level.Checkpoint>();
+            }
+
             var levelCtrl = new GameObject("DesertLevelController");
             levelCtrl.AddComponent<Level.DesertLevelController>();
 
             CreateDialogueUI(scene);
             CreateInGameHUD();
+            CreateGameplayUI(scene);
 
             EditorSceneManager.SaveScene(scene, ScenesPath + sceneName + ".unity");
             Debug.Log($"[SceneSetup] {sceneName} 생성");
         }
 
-        static void CreateOasisScene(string sceneName, Color bgColor, string mainNPC, string bossScene)
+        static void CreateOasisScene(string sceneName, Color bgColor, string mainNPC, string bossScene,
+            System.Type oasisControllerType = null)
         {
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
@@ -586,6 +599,7 @@ namespace TheSSand.Editor
             cam.orthographicSize = 5;
             cam.backgroundColor = bgColor;
             camObj.tag = "MainCamera";
+            camObj.AddComponent<CameraSystem.CameraController>();
 
             var ground = CreateTiledGround("Ground",
                 LoadSprite($"{ArtPath}Tilesets/tileset_oasis.png"),
@@ -602,6 +616,13 @@ namespace TheSSand.Editor
             savePoint.transform.position = new Vector3(-5, -1.5f, 0);
             savePoint.AddComponent<Level.SavePoint>();
 
+            var checkpoint = new GameObject("Checkpoint");
+            checkpoint.transform.position = new Vector3(-8, -1.5f, 0);
+            var cpCol = checkpoint.AddComponent<BoxCollider2D>();
+            cpCol.isTrigger = true;
+            cpCol.size = new Vector2(1f, 2f);
+            checkpoint.AddComponent<Level.Checkpoint>();
+
             var bossZone = new GameObject("BossZoneTrigger");
             bossZone.transform.position = new Vector3(20, 0, 0);
             var bossCol = bossZone.AddComponent<BoxCollider2D>();
@@ -611,10 +632,14 @@ namespace TheSSand.Editor
             bossZone.SetActive(false);
 
             var oasisCtrl = new GameObject("OasisController");
-            oasisCtrl.AddComponent<Level.OasisController>();
+            if (oasisControllerType != null)
+                oasisCtrl.AddComponent(oasisControllerType);
+            else
+                oasisCtrl.AddComponent<Level.OasisController>();
 
             CreateDialogueUI(scene);
             CreateInGameHUD();
+            CreateGameplayUI(scene);
 
             EditorSceneManager.SaveScene(scene, ScenesPath + sceneName + ".unity");
             Debug.Log($"[SceneSetup] {sceneName} 생성");
@@ -719,6 +744,45 @@ namespace TheSSand.Editor
 
             choicePanel.SetActive(false);
             dialoguePanel.SetActive(false);
+        }
+
+        static void CreateGameplayUI(UnityEngine.SceneManagement.Scene scene)
+        {
+            var uiCanvas = CreateCanvas("GameplayUICanvas");
+            uiCanvas.sortingOrder = 300;
+
+            var pauseObj = new GameObject("PauseMenu");
+            pauseObj.transform.SetParent(uiCanvas.transform, false);
+            pauseObj.AddComponent<UI.PauseMenu>();
+
+            var gameOverObj = new GameObject("GameOverUI");
+            gameOverObj.transform.SetParent(uiCanvas.transform, false);
+            gameOverObj.AddComponent<UI.GameOverUI>();
+
+            var tooltipObj = new GameObject("ItemTooltip");
+            tooltipObj.transform.SetParent(uiCanvas.transform, false);
+            tooltipObj.AddComponent<UI.ItemTooltip>();
+
+            var notifContainer = new GameObject("NotificationContainer");
+            notifContainer.transform.SetParent(uiCanvas.transform, false);
+            var ncRect = notifContainer.AddComponent<RectTransform>();
+            ncRect.anchorMin = new Vector2(0.65f, 0.6f);
+            ncRect.anchorMax = new Vector2(0.98f, 0.95f);
+            var vlg = notifContainer.AddComponent<VerticalLayoutGroup>();
+            vlg.spacing = 5;
+            vlg.childAlignment = TextAnchor.UpperRight;
+            vlg.childControlWidth = true;
+            vlg.childControlHeight = false;
+
+            var notifUI = notifContainer.AddComponent<UI.NotificationUI>();
+
+            var narrationObj = new GameObject("NarrationUI");
+            narrationObj.transform.SetParent(uiCanvas.transform, false);
+            narrationObj.AddComponent<UI.NarrationUI>();
+
+            var choiceUIObj = new GameObject("ChoiceUI");
+            choiceUIObj.transform.SetParent(uiCanvas.transform, false);
+            choiceUIObj.AddComponent<UI.ChoiceUI>();
         }
 
         #endregion

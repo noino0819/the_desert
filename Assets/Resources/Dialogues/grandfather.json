@@ -1,0 +1,137 @@
+{
+  "npcId": "grandfather",
+  "lines": [
+    {
+      "lineId": "prologue_hook",
+      "speaker": "할아버지",
+      "portrait": "grandfather_warm",
+      "text": "오랜만이구나, 얘야.\n오늘도 이야기 들으러 왔니?",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch1_oasis_greet",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_warm",
+      "text": "용사는 첫 번째 오아시스에 도착했습니다.\n그곳엔 아이들만 남아 있었지요.",
+      "isNG": false,
+      "condition": { "chapter": 1 },
+      "choices": null
+    },
+    {
+      "lineId": "ch1_seed_planted",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_proud",
+      "text": "용사는 첫 번째 씨앗을 심었습니다.\n그러자 땅에서 작은 싹이 돋아났지요.\n할아버지, 정말이에요?\n그럼, 정말이고말고.",
+      "isNG": false,
+      "condition": { "flag": "seed1_planted" },
+      "choices": null
+    },
+    {
+      "lineId": "ch2_transition",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_warm",
+      "text": "용사는 더 깊은 사막으로 향했습니다.\n두 번째 오아시스를 찾아서요.\n그곳은 첫 번째보다 훨씬 뜨거웠답니다.",
+      "isNG": false,
+      "condition": { "chapter": 2 },
+      "choices": null
+    },
+    {
+      "lineId": "ch2_children",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_sad",
+      "text": "그 오아시스엔 배고픈 아이들이 있었습니다.\n진흙으로 쿠키를 만들어 먹을 정도였지요.",
+      "isNG": false,
+      "condition": { "chapter": 2 },
+      "choices": null
+    },
+    {
+      "lineId": "ch3_transition",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_thoughtful",
+      "text": "세 번째 오아시스는 특이했습니다.\n하나의 오아시스인데, 벽으로 나뉘어 두 마을이 되어 있었지요.\n태양마을과 달마을.",
+      "isNG": false,
+      "condition": { "chapter": 3 },
+      "choices": null
+    },
+    {
+      "lineId": "ch3_conflict",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_thoughtful",
+      "text": "두 마을은 서로를 미워했습니다.\n왜냐고? 글쎄, 사람들은 가끔\n이유 없이도 싸우는 법이란다.",
+      "isNG": false,
+      "condition": { "chapter": 3 },
+      "choices": null
+    },
+    {
+      "lineId": "ch4_transition",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_warm",
+      "text": "마지막 오아시스는 사막의 끝에 있었습니다.\n밤하늘 아래, 폐허 속에서 혼자 연구하는 사람이 있었지요.",
+      "isNG": false,
+      "condition": { "chapter": 4 },
+      "choices": null
+    },
+    {
+      "lineId": "ch4_seed_truth",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_distant",
+      "text": "연구자는 씨앗에 대해 무언가를 알아냈습니다.\n하지만 용사에게 알려주기 전에…\n그만, 오늘은 여기까지란다.",
+      "isNG": false,
+      "condition": { "chapter": 4 },
+      "choices": [
+        {
+          "text": "왜요? 더 들려주세요!",
+          "nextLineId": "ch4_deflect",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "…알겠어요.",
+          "nextLineId": "ch4_accept_stop",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "ch4_deflect",
+      "speaker": "할아버지",
+      "portrait": "grandfather_sad",
+      "text": "하하, 다음에.\n할아버지도 좀 쉬어야지.\n내일 또 들려주마.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ch4_accept_stop",
+      "speaker": "할아버지",
+      "portrait": "grandfather_warm",
+      "text": "착하기도 하지.\n자, 이제 자거라.",
+      "isNG": false,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "seed_refuse_1",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_warm",
+      "text": "용사는 잠시 망설였습니다.\n정말 씨앗을 심어야 할까?\n하지만 곧 결심을 굳혔지요.",
+      "isNG": false,
+      "condition": { "flag": "seedRefuseCount_gte_1" },
+      "choices": null
+    },
+    {
+      "lineId": "seed_refuse_multi",
+      "speaker": "할아버지 (내레이션)",
+      "portrait": "grandfather_thoughtful",
+      "text": "용사는 계속 씨앗을 심지 않았습니다.\n왜 그랬을까요?\n…할아버지도 잘 모르겠구나.",
+      "isNG": false,
+      "condition": { "flag": "seedRefuseCount_gte_3" },
+      "choices": null
+    }
+  ]
+}

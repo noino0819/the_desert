@@ -1,0 +1,92 @@
+{
+  "npcId": "researcher",
+  "lines": [
+    {
+      "lineId": "ng_greet",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_quiet",
+      "text": "...너구나.\n그 사람의 손자.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_truth",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_changed",
+      "text": "나는 씨앗의 정체를 알아냈어.\n그래서 죽었지.\n'용사'가 나를 죽인 거야.\n진실을 말하려 했으니까.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_seed_truth",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_frozen",
+      "text": "그 씨앗은 녹지화 씨앗이 아니야.\n사막화 씨앗이야.\n심으면 주변의 수분을 전부 빨아들이지.\n오아시스를 말려 죽이는 거야.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_request",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_quiet",
+      "text": "네가 할 수 있는 건 하나야.\n할아버지가 심은 씨앗을 전부 뽑아.\n그러면... 오아시스가 다시 살아날 수 있어.",
+      "isNG": true,
+      "condition": null,
+      "choices": [
+        {
+          "text": "반드시 되돌리겠습니다.",
+          "nextLineId": "ng_hope",
+          "flagToSet": "ngSeedRecoveryStarted",
+          "questToProgress": "ng_seed_recovery",
+          "condition": null
+        },
+        {
+          "text": "...그게 가능한 건가요?",
+          "nextLineId": "ng_doubt",
+          "flagToSet": "",
+          "questToProgress": "ng_seed_recovery",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "ng_hope",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_quiet",
+      "text": "...고맙다.\n그 사람과는 다르구나.\n부디.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_doubt",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_quiet",
+      "text": "모르겠어.\n하지만 시도는 해볼 수 있잖아.\n그것만으로도... 충분해.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_lab_note",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_focused",
+      "text": "내 연구 기록이 아직 연구실에 남아있을 거야.\n그걸 보면 씨앗을 안전하게 제거하는 방법을 알 수 있어.",
+      "isNG": true,
+      "condition": { "flag": "ngSeedRecoveryStarted" },
+      "choices": null
+    },
+    {
+      "lineId": "ng_turtle_truth",
+      "speaker": "연구자의 유령",
+      "portrait": "researcher_sad",
+      "text": "과일거북... 아직 살아있니?\n그 아이는 원래 사막을 살리려고 만든 거였어.\n용사가 오기 전엔 잘 자라고 있었는데.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "npcId": "villager_3",
+  "lines": [
+    {
+      "lineId": "ng_greet",
+      "speaker": "소녀",
+      "portrait": "villager_girl",
+      "text": "안녕?\n여기 온 사람 오랜만에 본다.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_story",
+      "speaker": "소녀",
+      "portrait": "villager_girl",
+      "text": "엄마가 그러는데, 옛날엔 여기에 풀이 있었대.\n나무도 있고, 물도 많았고.\n내가 태어나기 전에 다 없어졌대.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_question",
+      "speaker": "소녀",
+      "portrait": "villager_girl",
+      "text": "오빠도 용사야?",
+      "isNG": true,
+      "condition": null,
+      "choices": [
+        {
+          "text": "아니, 그냥 보통 사람이야.",
+          "nextLineId": "ng_normal",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "용사의 손자야.",
+          "nextLineId": "ng_grandson",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "ng_normal",
+      "speaker": "소녀",
+      "portrait": "villager_girl",
+      "text": "에이, 보통 사람이 왜 여기까지 와.\n분명 뭔가 있지?\n...뭐, 상관없어. 반가워!",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_grandson",
+      "speaker": "소녀",
+      "portrait": "villager_girl",
+      "text": "용사?\n어른들이 용사 얘기만 나오면 화내던데.\n근데 오빠는 나빠 보이진 않는데.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "npcId": "villager_2",
+  "lines": [
+    {
+      "lineId": "ng_greet",
+      "speaker": "어머니",
+      "portrait": "villager_mother",
+      "text": "...또 외부인이야.\n우리 아이들한테 손대지 마.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_children",
+      "speaker": "어머니",
+      "portrait": "villager_mother",
+      "text": "예전에 온 사람이 아이들 식량을 가져갔어.\n세상을 구한다면서.\n아이들은 흙을 먹었어.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_ask",
+      "speaker": "어머니",
+      "portrait": "villager_mother",
+      "text": "너는 뭘 하러 온 거야?",
+      "isNG": true,
+      "condition": null,
+      "choices": [
+        {
+          "text": "아이들에게 사과하러 왔어요.",
+          "nextLineId": "ng_soften",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        },
+        {
+          "text": "이 땅을 되살리러 왔습니다.",
+          "nextLineId": "ng_skeptic",
+          "flagToSet": "",
+          "questToProgress": "",
+          "condition": null
+        }
+      ]
+    },
+    {
+      "lineId": "ng_soften",
+      "speaker": "어머니",
+      "portrait": "villager_mother",
+      "text": "...사과한다고 배가 부르진 않아.\n하지만 적어도 그 사람과는 다르구나.\n그 사람은 사과조차 하지 않았으니.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    },
+    {
+      "lineId": "ng_skeptic",
+      "speaker": "어머니",
+      "portrait": "villager_mother",
+      "text": "되살린다고?\n전에 온 사람도 그런 말을 했어.\n결과를 보여줘. 말 말고.",
+      "isNG": true,
+      "condition": null,
+      "choices": null
+    }
+  ]
+}
