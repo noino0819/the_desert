@@ -166,13 +166,19 @@ namespace TheSSand.Boss
                 if (currentPhase >= 2 && isBattleActive)
                 {
                     yield return new WaitForSeconds(0.5f);
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 1);
                     SpawnFeathers();
+                    yield return new WaitForSeconds(0.3f);
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 0);
                 }
 
                 if (currentPhase >= 3 && isBattleActive)
                 {
                     yield return new WaitForSeconds(0.3f);
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 2);
                     StartCoroutine(WindPush());
+                    yield return new WaitForSeconds(0.3f);
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 0);
                 }
             }
         }
@@ -182,6 +188,7 @@ namespace TheSSand.Boss
             if (eagleTransform == null || playerTransform == null) yield break;
 
             _isDiving = true;
+            if (bossAnimator != null) bossAnimator.SetBool("IsDiving", true);
 
             float targetX = playerTransform.position.x;
             float targetY = playerTransform.position.y + 0.5f;
@@ -217,6 +224,7 @@ namespace TheSSand.Boss
             }
 
             _isDiving = false;
+            if (bossAnimator != null) bossAnimator.SetBool("IsDiving", false);
         }
 
         void SpawnFeathers()

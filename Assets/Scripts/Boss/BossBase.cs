@@ -15,6 +15,9 @@ namespace TheSSand.Boss
         [SerializeField] protected int playerMaxHP = 3;
         [SerializeField] protected bool bridgeToPlayerController = true;
 
+        [Header("애니메이션")]
+        [SerializeField] protected Animator bossAnimator;
+
         protected int currentHP;
         protected int currentPhase = 1;
         protected int playerHP;
@@ -68,6 +71,9 @@ namespace TheSSand.Boss
             currentHP = Mathf.Max(0, currentHP - damage);
             OnBossHPChanged?.Invoke(currentHP, maxHP);
 
+            if (bossAnimator != null)
+                bossAnimator.SetTrigger("IsHit");
+
             if (currentHP <= 0)
             {
                 OnBossDefeated();
@@ -119,6 +125,10 @@ namespace TheSSand.Boss
         protected virtual void OnBossDefeated()
         {
             isBattleActive = false;
+
+            if (bossAnimator != null)
+                bossAnimator.SetBool("IsDefeated", true);
+
             OnBattleEnded?.Invoke(true);
         }
 

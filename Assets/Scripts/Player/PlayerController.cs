@@ -86,6 +86,16 @@ namespace TheSSand.Player
         float _flashTimer;
         bool _isFlashing;
 
+        // 애니메이션
+        Animator _animator;
+        static readonly int AnimSpeed = Animator.StringToHash("Speed");
+        static readonly int AnimIsGrounded = Animator.StringToHash("IsGrounded");
+        static readonly int AnimVelocityY = Animator.StringToHash("VelocityY");
+        static readonly int AnimIsHit = Animator.StringToHash("IsHit");
+        static readonly int AnimIsDashing = Animator.StringToHash("IsDashing");
+        static readonly int AnimIsWallSliding = Animator.StringToHash("IsWallSliding");
+        static readonly int AnimIsDead = Animator.StringToHash("IsDead");
+
         // 입력 잠금 (대화, 컷씬 등)
         bool _inputLocked;
 
@@ -105,6 +115,7 @@ namespace TheSSand.Player
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<BoxCollider2D>();
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
         void Start()
@@ -135,6 +146,7 @@ namespace TheSSand.Player
             }
 
             UpdateFlash();
+            UpdateAnimator();
         }
 
         void FixedUpdate()
@@ -406,6 +418,9 @@ namespace TheSSand.Player
             _invincibleTimer = hitInvincibleTime;
             StartFlash();
 
+            if (_animator != null)
+                _animator.SetTrigger(AnimIsHit);
+
             if (knockbackDir != default)
                 _rb.linearVelocity = knockbackDir * 6f;
 
@@ -435,6 +450,10 @@ namespace TheSSand.Player
         void Die()
         {
             LockInput(true);
+
+            if (_animator != null)
+                _animator.SetTrigger(AnimIsDead);
+
             OnPlayerDied?.Invoke();
             GameManager.Instance?.OnGameOver();
         }
@@ -443,6 +462,21 @@ namespace TheSSand.Player
         {
             _isFlashing = true;
             _flashTimer = hitInvincibleTime;
+        }
+
+        void UpdateAnimator()
+        {
+            if (_animator == null) return;
+
+            float speed = Mathf.Abs(_moveInput) * (_isRunning ? runSpeed : walkSpeed);
+            _animator.SetFloat(AnimSpeed, speed);
+            _animator.SetBool(AnimIsGrounded, _isGrounded);
+            _animator.SetFloat(AnimVelocityY, _rb.linearVelocity.y);
+            _animator.SetBool(AnimIsDashing, _isDashing);
+            _animator.SetBool(AnimIsWallSliding, _isWallSliding);
+
+            if (_spriteRenderer != null && _moveInput != 0)
+                _spriteRenderer.flipX = _moveInput < 0;
         }
 
         void UpdateFlash()

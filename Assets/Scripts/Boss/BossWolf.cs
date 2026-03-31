@@ -158,6 +158,11 @@ namespace TheSSand.Boss
                     break;
 
                 case JudgeResult.Miss:
+                    if (bossAnimator != null)
+                    {
+                        int atkType = currentPhase >= 2 ? 2 : 1;
+                        bossAnimator.SetInteger("AttackType", atkType);
+                    }
                     DamagePlayer(missDamageToPlayer);
                     _comboCount = 0;
                     break;
@@ -224,6 +229,8 @@ namespace TheSSand.Boss
 
         IEnumerator CircularSpin()
         {
+            if (bossAnimator != null) bossAnimator.SetBool("IsSpinning", true);
+
             NoteDirection[] spin = {
                 NoteDirection.Up, NoteDirection.Right,
                 NoteDirection.Down, NoteDirection.Left,
@@ -252,6 +259,8 @@ namespace TheSSand.Boss
                     _waitingForInput = false;
                 }
             }
+
+            if (bossAnimator != null) bossAnimator.SetBool("IsSpinning", false);
         }
 
         #endregion

@@ -112,25 +112,38 @@ namespace TheSSand.Boss
             switch (currentPhase)
             {
                 case 1:
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 1);
                     SpawnMudProjectile();
                     break;
                 case 2:
                     if (_attackCount % 2 == 0)
+                    {
+                        if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 1);
                         SpawnMudProjectile();
+                    }
                     else
+                    {
+                        if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 2);
                         SpawnWaterProjectile();
+                    }
                     break;
                 default:
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 1);
                     SpawnMudProjectile();
                     yield return new WaitForSeconds(0.2f);
+                    if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 2);
                     SpawnWaterProjectile();
                     break;
             }
+
+            yield return new WaitForSeconds(0.3f);
+            if (bossAnimator != null) bossAnimator.SetInteger("AttackType", 0);
         }
 
         IEnumerator StunPhase()
         {
             isStunned = true;
+            if (bossAnimator != null) bossAnimator.SetBool("IsStunned", true);
 
             float duration = currentPhase switch
             {
@@ -141,6 +154,7 @@ namespace TheSSand.Boss
 
             yield return new WaitForSeconds(duration);
             isStunned = false;
+            if (bossAnimator != null) bossAnimator.SetBool("IsStunned", false);
         }
 
         #endregion
