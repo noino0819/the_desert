@@ -20,6 +20,83 @@
       "description": "아저씨에게서 스카프를 받아 여행을 준비하자.",
       "goal": 1,
       "flagsOnComplete": ["scarfGiven"]
+    },
+    {
+      "questId": "ch2_survival",
+      "questName": "생존 기술 배우기",
+      "description": "잼잼크래프트에게서 사막 생존 기술을 배우자.",
+      "goal": 3,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch2_children",
+      "questName": "아이들 돌보기",
+      "description": "오아시스의 아이들이 안전한지 확인하자.",
+      "goal": 1,
+      "flagsOnComplete": ["ch2ChildrenAlive"]
+    },
+    {
+      "questId": "ch2_bandit",
+      "questName": "도적 침공 대비",
+      "description": "도적 침공에 대비해 마을 방어를 돕자.",
+      "goal": 1,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch2_promise",
+      "questName": "약속",
+      "description": "잼잼크래프트에게 꼭 돌아오겠다고 약속하자.",
+      "goal": 1,
+      "flagsOnComplete": ["saidIllComeBack"]
+    },
+    {
+      "questId": "ch3_wall",
+      "questName": "벽 사이의 틈",
+      "description": "솔과 루나 마을 사이의 벽을 조사하자.",
+      "goal": 1,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch3_doubleagent",
+      "questName": "이중 스파이",
+      "description": "두 마을을 오가며 양쪽의 사정을 전달하자.",
+      "goal": 4,
+      "flagsOnComplete": ["isDoubleAgent"]
+    },
+    {
+      "questId": "ch3_unite",
+      "questName": "마을 통합",
+      "description": "솔과 루나를 설득해 두 마을을 하나로 합치자.",
+      "goal": 1,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch4_experiment1",
+      "questName": "실험 의뢰 1",
+      "description": "연구원의 첫 번째 실험을 도와 카드를 획득하자.",
+      "goal": 1,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch4_experiment2",
+      "questName": "실험 의뢰 2",
+      "description": "연구원의 두 번째 실험을 위해 사막 재료를 모아오자.",
+      "goal": 3,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch4_experiment3",
+      "questName": "실험 의뢰 3",
+      "description": "연구원의 최종 실험 — 씨앗의 진실이 밝혀진다.",
+      "goal": 1,
+      "flagsOnComplete": []
+    },
+    {
+      "questId": "ch4_truth",
+      "questName": "씨앗의 진실",
+      "description": "연구원이 발견한 씨앗의 비밀을 확인하자.",
+      "goal": 1,
+      "flagsOnComplete": []
     }
   ]
 }

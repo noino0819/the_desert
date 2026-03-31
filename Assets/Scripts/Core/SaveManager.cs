@@ -64,6 +64,22 @@ namespace TheSSand.Core
 
         public bool HasSave(int slotIndex) => File.Exists(GetSlotPath(slotIndex));
 
+        public SaveData LoadLastUsedSlot()
+        {
+            if (GameManager.Instance != null)
+            {
+                int lastSlot = GameManager.Instance.CurrentSave.saveSlotIndex;
+                if (HasSave(lastSlot))
+                    return Load(lastSlot);
+            }
+
+            for (int i = 0; i < MaxSlots; i++)
+            {
+                if (HasSave(i)) return Load(i);
+            }
+            return null;
+        }
+
         /// <summary>
         /// 메뉴 슬롯 미리보기용. GameManager 상태를 변경하지 않음.
         /// </summary>

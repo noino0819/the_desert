@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using TheSSand.Core;
+using TheSSand.Player;
 
 namespace TheSSand.UI
 {
@@ -24,6 +25,8 @@ namespace TheSSand.UI
 
         int _currentHP;
 
+        PlayerController _player;
+
         void Start()
         {
             _currentHP = maxHearts;
@@ -33,12 +36,24 @@ namespace TheSSand.UI
 
             if (GameManager.Instance != null)
                 GameManager.Instance.OnFlagChanged += OnFlagChanged;
+
+            _player = FindFirstObjectByType<PlayerController>();
+            if (_player != null)
+                _player.OnHPChanged += OnPlayerHPChanged;
         }
 
         void OnDestroy()
         {
             if (GameManager.Instance != null)
                 GameManager.Instance.OnFlagChanged -= OnFlagChanged;
+
+            if (_player != null)
+                _player.OnHPChanged -= OnPlayerHPChanged;
+        }
+
+        void OnPlayerHPChanged(int current, int max)
+        {
+            SetHP(current, max);
         }
 
         void OnFlagChanged(string flag)

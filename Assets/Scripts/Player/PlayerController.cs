@@ -71,12 +71,26 @@ namespace TheSSand.Player
         float _dashCooldownTimer;
         Vector2 _dashDirection;
 
+        // 체력
+        [Header("체력")]
+        [SerializeField] int maxHP = 3;
+        int _currentHP;
+
         // 무적
         bool _isInvincible;
         float _invincibleTimer;
+        [SerializeField] float hitInvincibleTime = 1.5f;
+
+        // 피격 비주얼
+        SpriteRenderer _spriteRenderer;
+        float _flashTimer;
+        bool _isFlashing;
 
         // 입력 잠금 (대화, 컷씬 등)
         bool _inputLocked;
+
+        public event System.Action<int, int> OnHPChanged;
+        public event System.Action OnPlayerDied;
 
         #region 능력 해금 플래그
 
@@ -90,11 +104,14 @@ namespace TheSSand.Player
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<BoxCollider2D>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         void Start()
         {
+            _currentHP = maxHP;
             SyncAbilitiesFromSave();
+            OnHPChanged?.Invoke(_currentHP, maxHP);
         }
 
         void Update()
@@ -116,6 +133,8 @@ namespace TheSSand.Player
                 HandleWallSlide();
                 HandleDash();
             }
+
+            UpdateFlash();
         }
 
         void FixedUpdate()
@@ -360,6 +379,9 @@ namespace TheSSand.Player
 
         #region 외부 API
 
+        public int CurrentHP => _currentHP;
+        public int MaxHP => maxHP;
+
         public void LockInput(bool locked)
         {
             _inputLocked = locked;
@@ -368,6 +390,69 @@ namespace TheSSand.Player
         }
 
         public bool IsInvincible => _isInvincible;
+
+        public void TakeDamage(int damage = 1, Vector2 knockbackDir = default)
+        {
+            if (_isInvincible || _currentHP <= 0) return;
+
+            _currentHP = Mathf.Max(0, _currentHP - damage);
+            OnHPChanged?.Invoke(_currentHP, maxHP);
+
+            _isInvincible = true;
+            _invincibleTimer = hitInvincibleTime;
+            StartFlash();
+
+            if (knockbackDir != default)
+                _rb.linearVelocity = knockbackDir * 6f;
+
+            Audio.AudioManager.Instance?.PlaySFX("player_hit");
+
+            if (_currentHP <= 0)
+            {
+                Die();
+            }
+        }
+
+        public void Heal(int amount = 1)
+        {
+            if (_currentHP >= maxHP) return;
+            _currentHP = Mathf.Min(maxHP, _currentHP + amount);
+            OnHPChanged?.Invoke(_currentHP, maxHP);
+        }
+
+        public void ResetHP()
+        {
+            _currentHP = maxHP;
+            OnHPChanged?.Invoke(_currentHP, maxHP);
+        }
+
+        void Die()
+        {
+            LockInput(true);
+            OnPlayerDied?.Invoke();
+            GameManager.Instance?.OnGameOver();
+        }
+
+        void StartFlash()
+        {
+            _isFlashing = true;
+            _flashTimer = hitInvincibleTime;
+        }
+
+        void UpdateFlash()
+        {
+            if (!_isFlashing || _spriteRenderer == null) return;
+
+            _flashTimer -= Time.deltaTime;
+            bool visible = Mathf.FloorToInt(_flashTimer * 10f) % 2 == 0;
+            _spriteRenderer.enabled = visible;
+
+            if (_flashTimer <= 0)
+            {
+                _isFlashing = false;
+                _spriteRenderer.enabled = true;
+            }
+        }
 
         public void SyncAbilitiesFromSave()
         {
