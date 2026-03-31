@@ -122,7 +122,20 @@ namespace TheSSand.Player
         {
             _currentHP = maxHP;
             SyncAbilitiesFromSave();
+            RestorePositionIfNeeded();
             OnHPChanged?.Invoke(_currentHP, maxHP);
+        }
+
+        void RestorePositionIfNeeded()
+        {
+            var gm = Core.GameManager.Instance;
+            if (gm == null || !gm.PendingPositionRestore) return;
+
+            var save = gm.CurrentSave;
+            if (save.playerPosX != 0f || save.playerPosY != 0f)
+                transform.position = new Vector3(save.playerPosX, save.playerPosY, 0f);
+
+            gm.PendingPositionRestore = false;
         }
 
         void Update()

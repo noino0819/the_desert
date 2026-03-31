@@ -35,9 +35,12 @@ namespace TheSSand.Core
             };
         }
 
+        public bool PendingPositionRestore { get; set; }
+
         public void LoadGame(SaveData data)
         {
             CurrentSave = data;
+            PendingPositionRestore = true;
         }
 
         #region 씨앗 시스템

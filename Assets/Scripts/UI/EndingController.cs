@@ -13,8 +13,111 @@ namespace TheSSand.UI
 
         void Start()
         {
+            EnsureRequiredUI();
             int ending = EndingManager.Instance?.EvaluateAndTriggerEnding() ?? 1;
             StartCoroutine(PlayEnding(ending));
+        }
+
+        void EnsureRequiredUI()
+        {
+            if (NarrationUI.Instance == null)
+            {
+                var canvas = GetOrCreateCanvas("EndingNarrationCanvas");
+                var panel = new GameObject("NarrationPanel");
+                panel.transform.SetParent(canvas.transform, false);
+                var rt = panel.AddComponent<RectTransform>();
+                rt.anchorMin = Vector2.zero;
+                rt.anchorMax = Vector2.one;
+                rt.offsetMin = Vector2.zero;
+                rt.offsetMax = Vector2.zero;
+                var bg = panel.AddComponent<UnityEngine.UI.Image>();
+                bg.color = new Color(0, 0, 0, 0.75f);
+
+                var textObj = new GameObject("NarrationText");
+                textObj.transform.SetParent(panel.transform, false);
+                var tmp = textObj.AddComponent<TMPro.TextMeshProUGUI>();
+                tmp.fontSize = 24;
+                tmp.alignment = TMPro.TextAlignmentOptions.Center;
+                tmp.color = Color.white;
+                var txtRt = tmp.rectTransform;
+                txtRt.anchorMin = new Vector2(0.1f, 0.1f);
+                txtRt.anchorMax = new Vector2(0.9f, 0.9f);
+                txtRt.offsetMin = Vector2.zero;
+                txtRt.offsetMax = Vector2.zero;
+
+                var narration = panel.AddComponent<NarrationUI>();
+                panel.SetActive(false);
+            }
+
+            if (ChoiceUI.Instance == null)
+            {
+                var canvas = GetOrCreateCanvas("EndingChoiceCanvas");
+                var panel = new GameObject("ChoicePanel");
+                panel.transform.SetParent(canvas.transform, false);
+                var rt = panel.AddComponent<RectTransform>();
+                rt.anchorMin = new Vector2(0.3f, 0.3f);
+                rt.anchorMax = new Vector2(0.7f, 0.7f);
+                rt.offsetMin = Vector2.zero;
+                rt.offsetMax = Vector2.zero;
+
+                var btnContainer = new GameObject("ButtonContainer");
+                btnContainer.transform.SetParent(panel.transform, false);
+                var crt = btnContainer.AddComponent<RectTransform>();
+                crt.anchorMin = Vector2.zero;
+                crt.anchorMax = Vector2.one;
+                crt.offsetMin = Vector2.zero;
+                crt.offsetMax = Vector2.zero;
+                var layout = btnContainer.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
+                layout.spacing = 10;
+                layout.childAlignment = TextAnchor.MiddleCenter;
+
+                var btnPrefab = new GameObject("ChoiceButton");
+                var btnRt = btnPrefab.AddComponent<RectTransform>();
+                btnRt.sizeDelta = new Vector2(300, 50);
+                var btnBg = btnPrefab.AddComponent<UnityEngine.UI.Image>();
+                btnBg.color = new Color(0.85f, 0.78f, 0.65f);
+                btnPrefab.AddComponent<UnityEngine.UI.Button>();
+                var btnText = new GameObject("Text");
+                btnText.transform.SetParent(btnPrefab.transform, false);
+                var btnTmp = btnText.AddComponent<TMPro.TextMeshProUGUI>();
+                btnTmp.fontSize = 18;
+                btnTmp.alignment = TMPro.TextAlignmentOptions.Center;
+                btnTmp.color = new Color(0.15f, 0.1f, 0.05f);
+                var btnTxtRt = btnTmp.rectTransform;
+                btnTxtRt.anchorMin = Vector2.zero;
+                btnTxtRt.anchorMax = Vector2.one;
+                btnTxtRt.offsetMin = Vector2.zero;
+                btnTxtRt.offsetMax = Vector2.zero;
+                btnPrefab.SetActive(false);
+
+                var choice = panel.AddComponent<ChoiceUI>();
+                panel.SetActive(false);
+            }
+
+            if (FindAnyObjectByType<CreditsUI>(FindObjectsInactive.Include) == null)
+            {
+                var canvas = GetOrCreateCanvas("EndingCreditsCanvas");
+                var creditsObj = new GameObject("Credits");
+                creditsObj.transform.SetParent(canvas.transform, false);
+                var crt = creditsObj.AddComponent<RectTransform>();
+                crt.anchorMin = Vector2.zero;
+                crt.anchorMax = Vector2.one;
+                crt.offsetMin = Vector2.zero;
+                crt.offsetMax = Vector2.zero;
+                creditsObj.AddComponent<CreditsUI>();
+                creditsObj.SetActive(false);
+            }
+        }
+
+        Canvas GetOrCreateCanvas(string name)
+        {
+            var canvasObj = new GameObject(name);
+            var canvas = canvasObj.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 100;
+            canvasObj.AddComponent<UnityEngine.UI.CanvasScaler>();
+            canvasObj.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+            return canvas;
         }
 
         IEnumerator PlayEnding(int ending)

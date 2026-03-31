@@ -400,6 +400,19 @@ namespace TheSSand.Dialogue
             if (portraitImage == null || string.IsNullOrEmpty(portraitName)) return;
 
             Sprite sprite = Resources.Load<Sprite>($"Portraits/{portraitName}");
+
+            if (sprite == null)
+            {
+                string baseName = portraitName;
+                int lastUnderscore = portraitName.LastIndexOf('_');
+                if (lastUnderscore > 0)
+                    baseName = portraitName.Substring(0, lastUnderscore);
+
+                var sprites = Resources.LoadAll<Sprite>($"Portraits/{baseName}_portraits");
+                if (sprites != null && sprites.Length > 0)
+                    sprite = sprites[0];
+            }
+
             if (sprite != null)
                 portraitImage.sprite = sprite;
         }
