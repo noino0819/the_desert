@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using TheSSand.Player;
 
 namespace TheSSand.Boss
 {
@@ -12,12 +13,15 @@ namespace TheSSand.Boss
 
         [Header("플레이어")]
         [SerializeField] protected int playerMaxHP = 3;
+        [SerializeField] protected bool bridgeToPlayerController = true;
 
         protected int currentHP;
         protected int currentPhase = 1;
         protected int playerHP;
         protected bool isBattleActive;
         protected bool isStunned;
+
+        protected PlayerController _playerController;
 
         public event Action<int, int> OnBossHPChanged;
         public event Action<int, int> OnPlayerHPChanged;
@@ -28,6 +32,7 @@ namespace TheSSand.Boss
         {
             currentHP = maxHP;
             playerHP = playerMaxHP;
+            _playerController = FindFirstObjectByType<PlayerController>();
         }
 
         public virtual void StartBattle()
@@ -36,6 +41,16 @@ namespace TheSSand.Boss
             currentPhase = 1;
             currentHP = maxHP;
             playerHP = playerMaxHP;
+
+            if (_playerController == null)
+                _playerController = FindFirstObjectByType<PlayerController>();
+
+            if (bridgeToPlayerController && _playerController != null)
+            {
+                _playerController.ResetHP();
+                playerHP = _playerController.MaxHP;
+                playerMaxHP = _playerController.MaxHP;
+            }
 
             OnBossHPChanged?.Invoke(currentHP, maxHP);
             OnPlayerHPChanged?.Invoke(playerHP, playerMaxHP);
@@ -65,6 +80,17 @@ namespace TheSSand.Boss
         public virtual void DamagePlayer(int damage = 1)
         {
             if (!isBattleActive) return;
+
+            if (bridgeToPlayerController && _playerController != null)
+            {
+                _playerController.TakeDamage(damage);
+                playerHP = _playerController.CurrentHP;
+                OnPlayerHPChanged?.Invoke(playerHP, playerMaxHP);
+
+                if (_playerController.CurrentHP <= 0)
+                    OnPlayerDefeated();
+                return;
+            }
 
             playerHP = Mathf.Max(0, playerHP - damage);
             OnPlayerHPChanged?.Invoke(playerHP, playerMaxHP);

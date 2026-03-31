@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
 namespace TheSSand.UI
 {
-    public class InventorySlotUI : MonoBehaviour
+    public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField] Image iconImage;
         [SerializeField] TextMeshProUGUI nameText;
@@ -31,6 +32,23 @@ namespace TheSSand.UI
             }
             if (descriptionText != null)
                 descriptionText.text = item.description;
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (_item == null) return;
+            ItemTooltip.Instance?.Show(_item);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            ItemTooltip.Instance?.Hide();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_item == null || _item.category != ItemCategory.Consumable) return;
+            InventoryManager.Instance?.UseItem(_item.itemId);
         }
     }
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using TheSSand.Item;
+using TheSSand.Player;
 
 namespace TheSSand.Level
 {
@@ -14,6 +16,10 @@ namespace TheSSand.Level
 
     public class PickupItem : MonoBehaviour
     {
+        [Header("ItemData SO (우선 사용)")]
+        [SerializeField] ItemData itemData;
+
+        [Header("수동 설정 (ItemData 없을 때 폴백)")]
         [SerializeField] PickupType pickupType;
         [SerializeField] string itemId;
         [SerializeField] string itemName;
@@ -27,10 +33,16 @@ namespace TheSSand.Level
 
         bool _playerInRange;
 
+        string ResolvedId => itemData != null ? itemData.itemId : itemId;
+        string ResolvedName => itemData != null ? itemData.itemName : itemName;
+
         void Start()
         {
             if (interactPrompt != null)
                 interactPrompt.SetActive(false);
+
+            if (itemData == null && !string.IsNullOrEmpty(itemId))
+                itemData = ItemDatabase.Instance?.GetItem(itemId);
         }
 
         void Update()
@@ -70,7 +82,9 @@ namespace TheSSand.Level
             var gm = Core.GameManager.Instance;
             if (gm == null) return;
 
-            switch (pickupType)
+            PickupType resolvedType = itemData != null ? MapItemType(itemData.itemType) : pickupType;
+
+            switch (resolvedType)
             {
                 case PickupType.GoldenIdol:
                     gm.AddGoldenIdol();
@@ -78,21 +92,59 @@ namespace TheSSand.Level
                 case PickupType.Gold:
                     gm.AddGold(goldAmount);
                     break;
-                case PickupType.Scarf:
-                    gm.CurrentSave.inventoryItems.Add(itemId);
-                    break;
-                case PickupType.Note:
                 case PickupType.HealthItem:
-                case PickupType.QuestItem:
-                    gm.CurrentSave.inventoryItems.Add(itemId);
+                    var player = FindFirstObjectByType<PlayerController>();
+                    if (player != null && itemData != null)
+                        player.Heal(itemData.healAmount > 0 ? itemData.healAmount : 1);
+                    gm.CurrentSave.inventoryItems.Add(ResolvedId);
+                    break;
+                default:
+                    gm.CurrentSave.inventoryItems.Add(ResolvedId);
                     break;
             }
+
+            if (itemData != null)
+            {
+                UI.InventoryManager.Instance?.AddItem(
+                    itemData.itemId,
+                    itemData.itemName,
+                    itemData.description,
+                    MapToCategory(itemData.itemType),
+                    itemData.icon);
+            }
+            else
+            {
+                UI.InventoryManager.Instance?.AddItem(ResolvedId, ResolvedName, description);
+            }
+
+            Audio.AudioManager.Instance?.PlaySFX("item_pickup");
+            UI.NotificationUI.Instance?.ShowItemObtained(ResolvedName, itemData?.icon);
 
             if (pickupEffect != null)
                 Instantiate(pickupEffect, transform.position, Quaternion.identity);
 
-            Debug.Log($"[Pickup] {itemName} 획득");
+            Debug.Log($"[Pickup] {ResolvedName} 획득");
             gameObject.SetActive(false);
         }
+
+        static PickupType MapItemType(ItemType type) => type switch
+        {
+            ItemType.Consumable => PickupType.HealthItem,
+            ItemType.QuestItem => PickupType.QuestItem,
+            ItemType.KeyItem => PickupType.QuestItem,
+            ItemType.Note => PickupType.Note,
+            ItemType.GoldenIdol => PickupType.GoldenIdol,
+            _ => PickupType.QuestItem
+        };
+
+        static UI.ItemCategory MapToCategory(ItemType type) => type switch
+        {
+            ItemType.Consumable => UI.ItemCategory.Consumable,
+            ItemType.QuestItem => UI.ItemCategory.Quest,
+            ItemType.KeyItem => UI.ItemCategory.Quest,
+            ItemType.Note => UI.ItemCategory.Note,
+            ItemType.GoldenIdol => UI.ItemCategory.GoldenIdol,
+            _ => UI.ItemCategory.Misc
+        };
     }
 }

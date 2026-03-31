@@ -97,6 +97,14 @@ namespace TheSSand.UI
         void OnRetry()
         {
             Time.timeScale = 1f;
+
+            if (Level.Checkpoint.LastCheckpointPosition != null)
+            {
+                Level.Checkpoint.RespawnPlayer();
+                if (gameOverPanel != null) gameOverPanel.SetActive(false);
+                return;
+            }
+
             SceneTransitionManager.Instance?.ReloadCurrentScene();
         }
 

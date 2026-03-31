@@ -406,6 +406,7 @@ namespace TheSSand.Player
                 _rb.linearVelocity = knockbackDir * 6f;
 
             Audio.AudioManager.Instance?.PlaySFX("player_hit");
+            UI.DamageNumber.Spawn(transform.position + Vector3.up * 0.8f, damage);
 
             if (_currentHP <= 0)
             {
@@ -418,6 +419,7 @@ namespace TheSSand.Player
             if (_currentHP >= maxHP) return;
             _currentHP = Mathf.Min(maxHP, _currentHP + amount);
             OnHPChanged?.Invoke(_currentHP, maxHP);
+            UI.DamageNumber.Spawn(transform.position + Vector3.up * 0.8f, amount, true);
         }
 
         public void ResetHP()
