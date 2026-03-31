@@ -127,5 +127,9 @@ namespace TheSSand.Boss
             isBattleActive = false;
             OnBattleEnded?.Invoke(false);
         }
+
+        protected void RaiseBossHPChanged(int current, int max) => OnBossHPChanged?.Invoke(current, max);
+        protected void RaisePlayerHPChanged(int current, int max) => OnPlayerHPChanged?.Invoke(current, max);
+        protected void RaisePhaseChanged(int phase) => OnPhaseChanged?.Invoke(phase);
     }
 }

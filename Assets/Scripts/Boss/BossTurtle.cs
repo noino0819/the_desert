@@ -67,7 +67,7 @@ namespace TheSSand.Boss
         void OnCardPhaseChanged(int phase)
         {
             currentPhase = phase;
-            OnPhaseChanged?.Invoke(phase);
+            RaisePhaseChanged(phase);
 
             if (turtleAnimator != null)
                 turtleAnimator.SetInteger("Phase", phase);
@@ -78,10 +78,10 @@ namespace TheSSand.Boss
             if (cardBattleManager == null) return;
 
             currentHP = cardBattleManager.BossHP;
-            OnBossHPChanged?.Invoke(currentHP, maxHP);
+            RaiseBossHPChanged(currentHP, maxHP);
 
             playerHP = cardBattleManager.PlayerHP;
-            OnPlayerHPChanged?.Invoke(playerHP, playerMaxHP);
+            RaisePlayerHPChanged(playerHP, playerMaxHP);
 
             if (turtleAnimator != null)
             {
