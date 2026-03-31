@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6031f777506d948fd97e4db1e0a64031, type: 3}
+  m_Name: Card_seed_of_hope
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Card.CardData
+  cardId: seed_of_hope
+  cardName: "\uD76C\uB9DD\uC758 \uC528\uC557"
+  description: "10 \uBC29\uC5B4\uB3C4 + HP 10 \uD68C\uBCF5. \uAE30\uC801 \uAC19\uC740
+    \uCE74\uB4DC."
+  ngDescription: "\uC9C4\uC9DC \uC528\uC557. \uC9C4\uC2E4\uB41C \uD76C\uB9DD\uC744
+    \uC2EC\uB294\uB2E4."
+  cardType: 2
+  rarity: 2
+  energyCost: 3
+  attackValue: 0
+  defenseValue: 10
+  healValue: 10
+  drawCount: 0
+  applyPoison: 0
+  poisonStacks: 0
+  chainEffect: 0
+  chainMultiplier: 1
+  aoeEffect: 0
+  artwork: {fileID: 0}

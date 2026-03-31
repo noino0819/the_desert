@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc9caa6e885a421490f017a27e5c7d7, type: 3}
+  m_Name: Item_mud_cookie
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Item.ItemData
+  itemId: mud_cookie
+  itemName: "\uC9C4\uD759\uCFE0\uD0A4"
+  description: "\uC544\uC774\uB4E4\uC774 \uAD6C\uC6B4 \uC9C4\uD759\uCFE0\uD0A4. \uBA39\uC744
+    \uC21C \uC788\uC9C0\uB9CC...\nHP 1 \uD68C\uBCF5."
+  itemType: 0
+  icon: {fileID: 0}
+  buyPrice: 0
+  sellPrice: 1
+  isStackable: 1
+  maxStack: 99
+  healAmount: 1
+  removeOnUse: 1
+  ngDescription: "\uD759\uACFC \uC124\uD0D5\uC744 \uC11E\uC5B4 \uAD6C\uC6B4 \uAC83.
+    \uAE30\uC544\uC758 \uC99D\uAC70."

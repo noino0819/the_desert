@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6031f777506d948fd97e4db1e0a64031, type: 3}
+  m_Name: Card_strike
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Card.CardData
+  cardId: strike
+  cardName: "\uD0C0\uACA9"
+  description: "\uAE30\uBCF8 \uACF5\uACA9. 6 \uB370\uBBF8\uC9C0\uB97C \uC785\uD78C\uB2E4."
+  ngDescription: "\uC9C4\uC2E4\uC758 \uD0C0\uACA9. \uAC70\uC9D3\uC744 \uBC97\uACA8\uB0B8\uB2E4."
+  cardType: 0
+  rarity: 0
+  energyCost: 1
+  attackValue: 6
+  defenseValue: 0
+  healValue: 0
+  drawCount: 0
+  applyPoison: 0
+  poisonStacks: 0
+  chainEffect: 0
+  chainMultiplier: 1
+  aoeEffect: 0
+  artwork: {fileID: 0}

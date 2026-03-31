@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc9caa6e885a421490f017a27e5c7d7, type: 3}
+  m_Name: Item_oasis_water
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Item.ItemData
+  itemId: oasis_water
+  itemName: "\uC624\uC544\uC2DC\uC2A4 \uBB3C"
+  description: "\uB9D1\uC740 \uC624\uC544\uC2DC\uC2A4\uC758 \uBB3C. HP\uB97C 2 \uD68C\uBCF5\uD55C\uB2E4."
+  itemType: 0
+  icon: {fileID: 0}
+  buyPrice: 30
+  sellPrice: 12
+  isStackable: 1
+  maxStack: 99
+  healAmount: 2
+  removeOnUse: 1
+  ngDescription: 

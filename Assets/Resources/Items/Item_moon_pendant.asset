@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc9caa6e885a421490f017a27e5c7d7, type: 3}
+  m_Name: Item_moon_pendant
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Item.ItemData
+  itemId: moon_pendant
+  itemName: "\uB2EC \uD39C\uB358\uD2B8"
+  description: "\uB2EC\uB9C8\uC744\uC758 \uD39C\uB358\uD2B8. \uC57C\uAC04\uC5D0 \uC2DC\uC57C\uAC00
+    \uBC1D\uC544\uC9C4\uB2E4."
+  itemType: 3
+  icon: {fileID: 0}
+  buyPrice: 120
+  sellPrice: 45
+  isStackable: 0
+  maxStack: 99
+  healAmount: 0
+  removeOnUse: 1
+  ngDescription: 
