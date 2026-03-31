@@ -77,7 +77,7 @@ namespace TheSSand.Level
         {
             if (_playerTarget == null)
             {
-                var player = FindFirstObjectByType<PlayerController>();
+                var player = FindAnyObjectByType<PlayerController>();
                 if (player != null)
                     _playerTarget = player.transform;
             }

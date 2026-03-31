@@ -40,7 +40,7 @@ namespace TheSSand.UI
             loadButton?.onClick.AddListener(OnLoadSave);
             titleButton?.onClick.AddListener(OnReturnToTitle);
 
-            var player = FindFirstObjectByType<PlayerController>();
+            var player = FindAnyObjectByType<PlayerController>();
             if (player != null)
                 player.OnPlayerDied += ShowGameOver;
         }
@@ -126,7 +126,7 @@ namespace TheSSand.UI
 
         void OnDestroy()
         {
-            var player = FindFirstObjectByType<PlayerController>();
+            var player = FindAnyObjectByType<PlayerController>();
             if (player != null)
                 player.OnPlayerDied -= ShowGameOver;
         }

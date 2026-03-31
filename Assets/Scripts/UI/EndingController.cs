@@ -182,7 +182,7 @@ namespace TheSSand.UI
         {
             yield return new WaitForSeconds(2f);
 
-            var creditsUI = FindFirstObjectByType<CreditsUI>(FindObjectsInactive.Include);
+            var creditsUI = FindAnyObjectByType<CreditsUI>(FindObjectsInactive.Include);
             if (creditsUI != null)
             {
                 creditsUI.gameObject.SetActive(true);

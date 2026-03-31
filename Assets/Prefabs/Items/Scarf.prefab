@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11b1a85548674182ab7b140226ac75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Level.PickupItem
+  itemData: {fileID: 0}
   pickupType: 0
   itemId: 
   itemName: 

@@ -93,7 +93,7 @@ namespace TheSSand.Level
                     gm.AddGold(goldAmount);
                     break;
                 case PickupType.HealthItem:
-                    var player = FindFirstObjectByType<PlayerController>();
+                    var player = FindAnyObjectByType<PlayerController>();
                     if (player != null && itemData != null)
                         player.Heal(itemData.healAmount > 0 ? itemData.healAmount : 1);
                     gm.CurrentSave.inventoryItems.Add(ResolvedId);

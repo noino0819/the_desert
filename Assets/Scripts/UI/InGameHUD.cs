@@ -37,7 +37,7 @@ namespace TheSSand.UI
             if (GameManager.Instance != null)
                 GameManager.Instance.OnFlagChanged += OnFlagChanged;
 
-            _player = FindFirstObjectByType<PlayerController>();
+            _player = FindAnyObjectByType<PlayerController>();
             if (_player != null)
                 _player.OnHPChanged += OnPlayerHPChanged;
         }

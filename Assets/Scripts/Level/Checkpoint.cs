@@ -74,7 +74,7 @@ namespace TheSSand.Level
         {
             if (LastCheckpointPosition == null) return;
 
-            var player = FindFirstObjectByType<PlayerController>();
+            var player = FindAnyObjectByType<PlayerController>();
             if (player == null) return;
 
             player.transform.position = LastCheckpointPosition.Value;

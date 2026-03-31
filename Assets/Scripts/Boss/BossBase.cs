@@ -32,7 +32,7 @@ namespace TheSSand.Boss
         {
             currentHP = maxHP;
             playerHP = playerMaxHP;
-            _playerController = FindFirstObjectByType<PlayerController>();
+            _playerController = FindAnyObjectByType<PlayerController>();
         }
 
         public virtual void StartBattle()
@@ -43,7 +43,7 @@ namespace TheSSand.Boss
             playerHP = playerMaxHP;
 
             if (_playerController == null)
-                _playerController = FindFirstObjectByType<PlayerController>();
+                _playerController = FindAnyObjectByType<PlayerController>();
 
             if (bridgeToPlayerController && _playerController != null)
             {

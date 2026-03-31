@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &175166764422349555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6449048085681680730}
+  - component: {fileID: 5687870452696509950}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6449048085681680730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175166764422349555}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6807948797032498660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5687870452696509950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175166764422349555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3baad8aeff6243ff9c1156945f7eafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Audio.AudioManager
+  bgmSourceA: {fileID: 0}
+  bgmSourceB: {fileID: 0}
+  crossFadeDuration: 1.5
+  sfxSource: {fileID: 0}
+  sfxPoolSize: 8
+  masterVolume: 1
+  bgmVolume: 0.7
+  sfxVolume: 1
+--- !u!1 &2326361392443421422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7682901460749427484}
+  - component: {fileID: 6578004012420503753}
+  m_Layer: 0
+  m_Name: ItemDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7682901460749427484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326361392443421422}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6807948797032498660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6578004012420503753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326361392443421422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ae6801de28242d3a48b2b156c55c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Item.ItemDatabase
 --- !u!1 &2538921821499357084
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +195,57 @@ MonoBehaviour:
   choiceButtonPrefab: {fileID: 0}
   typingSpeed: 0.03
   fastForwardSpeed: 0.005
+--- !u!1 &4095731177893913995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8401779423573438165}
+  - component: {fileID: 626021746653874262}
+  m_Layer: 0
+  m_Name: LoadingScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8401779423573438165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095731177893913995}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6807948797032498660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626021746653874262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095731177893913995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3684711dc8aa949d490727708066952d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.UI.LoadingScreen
+  loadingPanel: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  progressBar: {fileID: 0}
+  progressText: {fileID: 0}
+  tipText: {fileID: 0}
+  fadeDuration: 0.3
+  minimumLoadTime: 1
 --- !u!1 &6136726923894676605
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +257,7 @@ GameObject:
   - component: {fileID: 6807948797032498660}
   - component: {fileID: 7331886096061959679}
   - component: {fileID: 8835414713855970508}
+  - component: {fileID: 8585527112361395488}
   m_Layer: 0
   m_Name: GameBootstrapper
   m_TagString: Untagged
@@ -133,6 +281,9 @@ Transform:
   - {fileID: 8496219222110966595}
   - {fileID: 7529775306549760414}
   - {fileID: 7255534393227910103}
+  - {fileID: 6449048085681680730}
+  - {fileID: 7682901460749427484}
+  - {fileID: 8401779423573438165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7331886096061959679
@@ -159,6 +310,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7477bb2417fe246b5995b67dacaf0651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Core.SaveManager
+--- !u!114 &8585527112361395488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136726923894676605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b00b3820d6dc47019f57ddd3f594029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TheSSand.Core.EndingManager
 --- !u!1 &8187922994513073118
 GameObject:
   m_ObjectHideFlags: 0

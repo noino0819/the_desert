@@ -46,7 +46,7 @@ namespace TheSSand.Level
             var cam = Camera.main;
             if (cam != null)
             {
-                var light = FindFirstObjectByType<UnityEngine.Rendering.Universal.Light2D>();
+                var light = FindAnyObjectByType<UnityEngine.Rendering.Universal.Light2D>();
                 if (light != null)
                     light.intensity *= 0.7f;
             }
