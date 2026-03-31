@@ -144,7 +144,7 @@ namespace TheSSand.UI
 
         #region 세이브 연동
 
-        void SyncToSave()
+        public void SyncToSave()
         {
             if (GameManager.Instance == null) return;
             var save = GameManager.Instance.CurrentSave;

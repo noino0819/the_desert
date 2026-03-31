@@ -23,7 +23,7 @@ namespace TheSSand.Dialogue
 
         [Header("타이핑 설정")]
         [SerializeField] float typingSpeed = 0.03f;
-        [SerializeField] float fastForwardSpeed = 0.005f;
+        [SerializeField] float advanceHoldInterval = 0.15f;
 
         DialogueData _currentDialogue;
         int _currentLineIndex;
@@ -31,6 +31,7 @@ namespace TheSSand.Dialogue
         bool _isDialogueActive;
         string _fullText;
         Coroutine _typingCoroutine;
+        float _holdAdvanceTimer;
 
         public event Action OnDialogueStarted;
         public event Action OnDialogueEnded;
@@ -60,10 +61,21 @@ namespace TheSSand.Dialogue
                     FinishTyping();
                 else
                     AdvanceLine();
+                _holdAdvanceTimer = 0f;
             }
-
-            if (Input.GetKey(KeyCode.Space) && !_isTyping)
-                AdvanceLine();
+            else if (Input.GetKey(KeyCode.Space) && !_isTyping)
+            {
+                _holdAdvanceTimer += Time.unscaledDeltaTime;
+                if (_holdAdvanceTimer >= advanceHoldInterval)
+                {
+                    _holdAdvanceTimer = 0f;
+                    AdvanceLine();
+                }
+            }
+            else
+            {
+                _holdAdvanceTimer = 0f;
+            }
         }
 
         #region 공개 API
@@ -207,9 +219,13 @@ namespace TheSSand.Dialogue
             _fullText = text;
             dialogueText.text = "";
 
+            int charCount = 0;
             foreach (char c in text)
             {
                 dialogueText.text += c;
+                charCount++;
+                if (charCount % 3 == 0 && c != ' ' && c != '\n')
+                    Audio.AudioManager.Instance?.PlaySFX("dialogue_blip", 0.1f);
                 yield return new WaitForSecondsRealtime(typingSpeed);
             }
             _isTyping = false;

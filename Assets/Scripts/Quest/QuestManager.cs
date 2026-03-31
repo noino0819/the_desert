@@ -209,6 +209,9 @@ namespace TheSSand.Quest
                     case "isDoubleAgent":
                         GameManager.Instance.SetDoubleAgent(true);
                         break;
+                    case "ch2ChildrenAlive":
+                        GameManager.Instance.SetChildrenAlive(true);
+                        break;
                 }
             }
         }
@@ -270,7 +273,7 @@ namespace TheSSand.Quest
         /// </summary>
         public void EvaluateChildrenSurvival()
         {
-            bool allDone = AreAllCompleted("ch2_survive", "ch2_skill", "ch2_scarfPass");
+            bool allDone = AreAllCompleted("ch2_survival", "ch2_children", "ch2_promise");
             GameManager.Instance?.SetChildrenAlive(allDone);
         }
 

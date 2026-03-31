@@ -20,6 +20,13 @@ namespace TheSSand.Editor
             SliceAndAnimate_Hero();
             SliceAndAnimate_CaptainBoy();
             SliceAndAnimate_Fairy();
+            SliceAndAnimate_Villagers();
+            SliceAndAnimate_Jamjamcraft();
+            SliceAndAnimate_Sol();
+            SliceAndAnimate_Luna();
+            SliceAndAnimate_Researcher();
+            SliceAndAnimate_Grandfather();
+            SliceAndAnimate_ShopKeeper();
             SliceAndAnimate_BossHippo();
             SliceAndAnimate_BossEagle();
             SliceAndAnimate_BossWolf();
@@ -28,7 +35,7 @@ namespace TheSSand.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             Debug.Log("[Animator] 전체 애니메이션 생성 완료!");
-            EditorUtility.DisplayDialog("완료", "7개 캐릭터/보스 AnimatorController 생성 완료.", "확인");
+            EditorUtility.DisplayDialog("완료", "14개 캐릭터/NPC/보스 AnimatorController 생성 완료.", "확인");
         }
 
         #endregion
@@ -191,13 +198,17 @@ namespace TheSSand.Editor
 
         #endregion
 
-        #region Fairy — 2×2 시트
+        #region Fairy — 3×2 시트 (Float, Sparkle, Talk)
 
         [MenuItem("The SSand/애니메이션 설정/Fairy")]
         static void SliceAndAnimate_Fairy()
         {
+            // fairy_sprite.png 레이아웃 (3행 × 2열 = 6프레임)
+            // Row 0: [0] Float_0  [1] Float_1
+            // Row 1: [2] Sparkle_0 [3] Sparkle_1
+            // Row 2: [4] Talk_0   [5] Talk_1
             string texPath = "Assets/Art/Characters/fairy_sprite.png";
-            var sprites = SliceSpriteSheet(texPath, 2, 2, out _, out _);
+            var sprites = SliceSpriteSheet(texPath, 3, 2, out _, out _);
             if (sprites == null) return;
 
             string folder = $"{AnimRoot}/Fairy";
@@ -207,14 +218,19 @@ namespace TheSSand.Editor
             var rootSM = controller.layers[0].stateMachine;
 
             controller.AddParameter("IsSparkle", AnimatorControllerParameterType.Bool);
+            controller.AddParameter("Talk", AnimatorControllerParameterType.Trigger);
+            controller.AddParameter("IsTalking", AnimatorControllerParameterType.Bool);
 
             var floatClip = CreateClip("Float", sprites, new[]{ 0, 1 }, 6, folder);
             var sparkleClip = CreateClip("Sparkle", sprites, new[]{ 2, 3 }, 6, folder);
+            var talkClip = CreateClip("Talk", sprites, new[]{ 4, 5 }, 6, folder);
 
             var floatState = rootSM.AddState("Float");
             floatState.motion = floatClip;
             var sparkleState = rootSM.AddState("Sparkle");
             sparkleState.motion = sparkleClip;
+            var talkState = rootSM.AddState("Talk");
+            talkState.motion = talkClip;
 
             rootSM.defaultState = floatState;
 
@@ -223,7 +239,25 @@ namespace TheSSand.Editor
             AddTransition(sparkleState, floatState,
                 ("IsSparkle", AnimatorConditionMode.IfNot, 0));
 
-            Debug.Log("[Animator] Fairy AnimatorController 생성");
+            // Talk 트리거 (SavePoint에서 SetTrigger("Talk") 호출)
+            var toTalk = rootSM.AddAnyStateTransition(talkState);
+            toTalk.AddCondition(AnimatorConditionMode.If, 0, "Talk");
+            toTalk.hasExitTime = false;
+            toTalk.duration = 0;
+
+            // IsTalking Bool로도 진입 가능 (NPCInteractable 연동)
+            AddTransition(floatState, talkState,
+                ("IsTalking", AnimatorConditionMode.If, 0));
+            AddTransition(talkState, floatState,
+                ("IsTalking", AnimatorConditionMode.IfNot, 0));
+
+            // Talk 트리거 후 자동 복귀
+            var talkToFloat = talkState.AddTransition(floatState);
+            talkToFloat.hasExitTime = true;
+            talkToFloat.exitTime = 1f;
+            talkToFloat.duration = 0;
+
+            Debug.Log("[Animator] Fairy AnimatorController 생성 (3개 상태)");
         }
 
         #endregion

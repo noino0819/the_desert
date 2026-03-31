@@ -40,6 +40,20 @@ namespace TheSSand.Core
             var save = GameManager.Instance.CurrentSave;
             save.saveSlotIndex = slotIndex;
             save.playTime += Time.timeSinceLevelLoad;
+            save.currentSceneId = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+            if (Quest.QuestManager.Instance != null)
+                save.questStates = Quest.QuestManager.Instance.GetSaveEntries();
+
+            if (UI.InventoryManager.Instance != null)
+                UI.InventoryManager.Instance.SyncToSave();
+
+            var player = UnityEngine.Object.FindAnyObjectByType<Player.PlayerController>();
+            if (player != null)
+            {
+                save.playerPosX = player.transform.position.x;
+                save.playerPosY = player.transform.position.y;
+            }
 
             string json = JsonUtility.ToJson(save, true);
             File.WriteAllText(GetSlotPath(slotIndex), json);
@@ -58,6 +72,13 @@ namespace TheSSand.Core
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             GameManager.Instance.LoadGame(data);
+
+            if (Quest.QuestManager.Instance != null)
+                Quest.QuestManager.Instance.RestoreFromSave(data.questStates);
+
+            if (UI.InventoryManager.Instance != null)
+                UI.InventoryManager.Instance.RestoreFromSave();
+
             Debug.Log($"[SaveManager] 슬롯 {slotIndex} 로드 완료");
             return data;
         }

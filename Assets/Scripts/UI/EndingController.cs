@@ -19,6 +19,7 @@ namespace TheSSand.UI
 
         IEnumerator PlayEnding(int ending)
         {
+            AudioManager.Instance?.PlayBGM("BGM_Ending");
             AudioManager.Instance?.PlaySFX("SFX_BookPageTurn");
 
             yield return new WaitForSeconds(1f);
