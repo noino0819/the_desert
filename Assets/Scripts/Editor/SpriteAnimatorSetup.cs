@@ -588,6 +588,120 @@ namespace TheSSand.Editor
 
         #endregion
 
+        #region Villager 1~3 — villager_npcs.png 3×4 시트 (각 주민: Idle, Talking)
+
+        [MenuItem("The SSand/애니메이션 설정/Villagers")]
+        static void SliceAndAnimate_Villagers()
+        {
+            // villager_npcs.png 레이아웃 (3행 × 4열 = 12프레임)
+            // Row 0: 주민1 [0] Idle_0 [1] Idle_1 [2] Talk_0 [3] Talk_1
+            // Row 1: 주민2 [4] Idle_0 [5] Idle_1 [6] Talk_0 [7] Talk_1
+            // Row 2: 주민3 [8] Idle_0 [9] Idle_1 [10] Talk_0 [11] Talk_1
+            string texPath = "Assets/Art/Characters/villager_npcs.png";
+            var sprites = SliceSpriteSheet(texPath, 3, 4, out _, out _);
+            if (sprites == null) return;
+
+            for (int v = 0; v < 3; v++)
+            {
+                string name = $"Villager{v + 1}";
+                string folder = $"{AnimRoot}/{name}";
+                EnsureFolder(folder);
+
+                int baseIdx = v * 4;
+
+                var controller = AnimatorController.CreateAnimatorControllerAtPath(
+                    $"{folder}/{name}_AC.controller");
+                var rootSM = controller.layers[0].stateMachine;
+
+                controller.AddParameter("IsTalking", AnimatorControllerParameterType.Bool);
+
+                var idleClip = CreateClip("Idle", sprites,
+                    new[] { baseIdx, baseIdx + 1 }, 4, folder);
+                var talkClip = CreateClip("Talking", sprites,
+                    new[] { baseIdx + 2, baseIdx + 3 }, 4, folder);
+
+                var idleState = rootSM.AddState("Idle");
+                idleState.motion = idleClip;
+                var talkState = rootSM.AddState("Talking");
+                talkState.motion = talkClip;
+
+                rootSM.defaultState = idleState;
+
+                AddTransition(idleState, talkState,
+                    ("IsTalking", AnimatorConditionMode.If, 0));
+                AddTransition(talkState, idleState,
+                    ("IsTalking", AnimatorConditionMode.IfNot, 0));
+
+                Debug.Log($"[Animator] {name} AnimatorController 생성");
+            }
+        }
+
+        #endregion
+
+        #region NPC 공통 — 2×2 시트 (Idle, Talking) 일괄 생성
+
+        [MenuItem("The SSand/애니메이션 설정/Jamjamcraft")]
+        static void SliceAndAnimate_Jamjamcraft()
+            => CreateSimpleNPCAnimator("Jamjamcraft", "Assets/Art/Characters/jamjamcraft_npc.png");
+
+        [MenuItem("The SSand/애니메이션 설정/Sol")]
+        static void SliceAndAnimate_Sol()
+            => CreateSimpleNPCAnimator("Sol", "Assets/Art/Characters/sol_npc.png");
+
+        [MenuItem("The SSand/애니메이션 설정/Luna")]
+        static void SliceAndAnimate_Luna()
+            => CreateSimpleNPCAnimator("Luna", "Assets/Art/Characters/luna_npc.png");
+
+        [MenuItem("The SSand/애니메이션 설정/Researcher")]
+        static void SliceAndAnimate_Researcher()
+            => CreateSimpleNPCAnimator("Researcher", "Assets/Art/Characters/researcher_npc.png");
+
+        [MenuItem("The SSand/애니메이션 설정/Grandfather")]
+        static void SliceAndAnimate_Grandfather()
+            => CreateSimpleNPCAnimator("Grandfather", "Assets/Art/Characters/grandfather_npc.png");
+
+        [MenuItem("The SSand/애니메이션 설정/ShopKeeper")]
+        static void SliceAndAnimate_ShopKeeper()
+            => CreateSimpleNPCAnimator("ShopKeeper", "Assets/Art/Characters/shopkeeper_npc.png");
+
+        /// <summary>
+        /// 2×2 NPC 스프라이트 시트용 공통 AnimatorController 생성.
+        /// Row 0: Idle (frame 0, 1) / Row 1: Talking (frame 2, 3)
+        /// </summary>
+        static void CreateSimpleNPCAnimator(string npcName, string texPath)
+        {
+            var sprites = SliceSpriteSheet(texPath, 2, 2, out _, out _);
+            if (sprites == null) return;
+
+            string folder = $"{AnimRoot}/{npcName}";
+            EnsureFolder(folder);
+
+            var controller = AnimatorController.CreateAnimatorControllerAtPath(
+                $"{folder}/{npcName}_AC.controller");
+            var rootSM = controller.layers[0].stateMachine;
+
+            controller.AddParameter("IsTalking", AnimatorControllerParameterType.Bool);
+
+            var idleClip = CreateClip("Idle", sprites, new[] { 0, 1 }, 4, folder);
+            var talkClip = CreateClip("Talking", sprites, new[] { 2, 3 }, 4, folder);
+
+            var idleState = rootSM.AddState("Idle");
+            idleState.motion = idleClip;
+            var talkState = rootSM.AddState("Talking");
+            talkState.motion = talkClip;
+
+            rootSM.defaultState = idleState;
+
+            AddTransition(idleState, talkState,
+                ("IsTalking", AnimatorConditionMode.If, 0));
+            AddTransition(talkState, idleState,
+                ("IsTalking", AnimatorConditionMode.IfNot, 0));
+
+            Debug.Log($"[Animator] {npcName} AnimatorController 생성");
+        }
+
+        #endregion
+
         #region 스프라이트 슬라이싱
 
         static Sprite[] SliceSpriteSheet(string texPath, int rows, int cols, out int frameW, out int frameH)

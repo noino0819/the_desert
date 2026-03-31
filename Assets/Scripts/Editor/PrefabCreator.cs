@@ -117,10 +117,28 @@ namespace TheSSand.Editor
         static void CreateNPCPrefabs()
         {
             CreateSingleNPC("NPC_CaptainBoy", "Assets/Art/Characters/captain_boy_npc.png",
-                "captain_boy", 5);
+                "captain_boy", 5, "Assets/Animations/CaptainBoy/CaptainBoy_AC.controller");
 
             CreateSingleNPC("NPC_Fairy", "Assets/Art/Characters/fairy_sprite.png",
-                "fairy", 12);
+                "fairy", 12, "Assets/Animations/Fairy/Fairy_AC.controller");
+
+            CreateSingleNPC("NPC_Jamjamcraft", "Assets/Art/Characters/jamjamcraft_npc.png",
+                "jamjamcraft", 5, "Assets/Animations/Jamjamcraft/Jamjamcraft_AC.controller");
+
+            CreateSingleNPC("NPC_Sol", "Assets/Art/Characters/sol_npc.png",
+                "sol", 5, "Assets/Animations/Sol/Sol_AC.controller");
+
+            CreateSingleNPC("NPC_Luna", "Assets/Art/Characters/luna_npc.png",
+                "luna", 5, "Assets/Animations/Luna/Luna_AC.controller");
+
+            CreateSingleNPC("NPC_Researcher", "Assets/Art/Characters/researcher_npc.png",
+                "researcher", 5, "Assets/Animations/Researcher/Researcher_AC.controller");
+
+            CreateSingleNPC("NPC_Grandfather", "Assets/Art/Characters/grandfather_npc.png",
+                "grandfather", 5, "Assets/Animations/Grandfather/Grandfather_AC.controller");
+
+            CreateSingleNPC("NPC_ShopKeeper", "Assets/Art/Characters/shopkeeper_npc.png",
+                "shopkeeper", 5, "Assets/Animations/ShopKeeper/ShopKeeper_AC.controller");
 
             var villagerSprite = LoadSprite("Assets/Art/Characters/villager_npcs.png");
             for (int i = 1; i <= 3; i++)
@@ -136,11 +154,17 @@ namespace TheSSand.Editor
 
                 obj.AddComponent<Level.NPCInteractable>();
 
+                var animator = obj.AddComponent<Animator>();
+                string acPath = $"Assets/Animations/Villager{i}/Villager{i}_AC.controller";
+                var ac = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(acPath);
+                if (ac != null) animator.runtimeAnimatorController = ac;
+
                 SavePrefab(obj, $"{PrefabRoot}/NPC/NPC_Villager_{i}.prefab");
             }
         }
 
-        static void CreateSingleNPC(string name, string spritePath, string npcId, int sortOrder)
+        static void CreateSingleNPC(string name, string spritePath, string npcId, int sortOrder,
+            string animControllerPath = null)
         {
             var obj = new GameObject(name);
             var sr = obj.AddComponent<SpriteRenderer>();
@@ -152,6 +176,13 @@ namespace TheSSand.Editor
             col.isTrigger = true;
 
             obj.AddComponent<Level.NPCInteractable>();
+
+            if (!string.IsNullOrEmpty(animControllerPath))
+            {
+                var animator = obj.AddComponent<Animator>();
+                var ac = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(animControllerPath);
+                if (ac != null) animator.runtimeAnimatorController = ac;
+            }
 
             SavePrefab(obj, $"{PrefabRoot}/NPC/{name}.prefab");
         }
