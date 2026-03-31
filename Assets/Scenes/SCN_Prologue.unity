@@ -514,12 +514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db4d97e3147340cf88b2fc691c81625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheSSand.UI.PrologueController
-  nameInputPanel: {fileID: 0}
-  nameInputField: {fileID: 0}
-  confirmButton: {fileID: 0}
-  promptText: {fileID: 0}
-  storyPanel: {fileID: 0}
-  storyText: {fileID: 0}
+  nameInputPanel: {fileID: 1060033252}
+  nameInputField: {fileID: 1739213625}
+  confirmButton: {fileID: 445922183}
+  promptText: {fileID: 73239035}
+  storyPanel: {fileID: 946391301}
+  storyText: {fileID: 124818042}
   grandpaPortrait: {fileID: 0}
   pageBackground: {fileID: 0}
   typingSpeed: 0.04
@@ -807,6 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 929963806}
   - component: {fileID: 929963805}
+  - component: {fileID: 929963807}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -880,6 +881,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &929963807
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929963804}
+  m_Enabled: 1
 --- !u!1 &946391301
 GameObject:
   m_ObjectHideFlags: 0
