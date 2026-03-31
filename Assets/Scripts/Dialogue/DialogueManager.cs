@@ -87,6 +87,7 @@ namespace TheSSand.Dialogue
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(true);
 
+            LockPlayerInput(true);
             OnDialogueStarted?.Invoke();
             ShowCurrentLine();
         }
@@ -102,6 +103,7 @@ namespace TheSSand.Dialogue
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(true);
 
+            LockPlayerInput(true);
             OnDialogueStarted?.Invoke();
             ShowCurrentLine();
         }
@@ -184,7 +186,15 @@ namespace TheSSand.Dialogue
                 dialoguePanel.SetActive(false);
 
             ClearChoices();
+            LockPlayerInput(false);
             OnDialogueEnded?.Invoke();
+        }
+
+        void LockPlayerInput(bool locked)
+        {
+            var player = FindAnyObjectByType<Player.PlayerController>();
+            if (player != null)
+                player.LockInput(locked);
         }
 
         #endregion

@@ -48,6 +48,8 @@ namespace TheSSand.UI
             SetupSettingsPanel();
             UpdateNewGame2Button();
             UpdateLoadSlots();
+
+            AudioManager.Instance?.PlayBGM("BGM_Title");
         }
 
         void SetupButtons()

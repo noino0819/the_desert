@@ -1,4 +1,5 @@
 using UnityEngine;
+using TheSSand.Audio;
 using TheSSand.Core;
 using TheSSand.Quest;
 using TheSSand.Scene;
@@ -34,6 +35,7 @@ namespace TheSSand.Level
             if (QuestManager.Instance != null)
                 QuestManager.Instance.OnQuestStateChanged += OnQuestChanged;
 
+            AudioManager.Instance?.PlayBGM($"BGM_Ch{chapter}_Oasis");
             SceneTransitionManager.Instance?.FadeIn();
         }
 

@@ -201,6 +201,8 @@ namespace TheSSand.Player
             if (_isGrounded)
             {
                 _coyoteTimer = coyoteTime;
+                if (_jumpCount > 0 || (wasGrounded == false && _rb.linearVelocity.y <= 0.1f))
+                    Audio.AudioManager.Instance?.PlaySFX("player_land", 0.08f);
                 _jumpCount = 0;
                 _isJumping = false;
             }
@@ -287,6 +289,7 @@ namespace TheSSand.Player
             _isJumping = true;
             _jumpBufferTimer = 0;
             _coyoteTimer = 0;
+            Audio.AudioManager.Instance?.PlaySFX("player_jump", 0.05f);
         }
 
         void WallJump()
@@ -297,6 +300,7 @@ namespace TheSSand.Player
             _isWallSliding = false;
             _jumpBufferTimer = 0;
             _jumpCount = 1;
+            Audio.AudioManager.Instance?.PlaySFX("player_jump", 0.05f);
         }
 
         #endregion

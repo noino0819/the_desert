@@ -31,15 +31,15 @@ namespace TheSSand.Core
             root.AddComponent<SaveManager>();
 
             var transitionObj = new GameObject("SceneTransitionManager");
-            transitionObj.transform.SetParent(root.transform);
+            DontDestroyOnLoad(transitionObj);
             transitionObj.AddComponent<Scene.SceneTransitionManager>();
 
             var dialogueObj = new GameObject("DialogueManager");
-            dialogueObj.transform.SetParent(root.transform);
+            DontDestroyOnLoad(dialogueObj);
             dialogueObj.AddComponent<Dialogue.DialogueManager>();
 
             var questObj = new GameObject("QuestManager");
-            questObj.transform.SetParent(root.transform);
+            DontDestroyOnLoad(questObj);
             questObj.AddComponent<Quest.QuestManager>();
         }
     }

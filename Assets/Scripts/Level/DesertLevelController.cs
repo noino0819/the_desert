@@ -1,4 +1,5 @@
 using UnityEngine;
+using TheSSand.Audio;
 using TheSSand.Scene;
 
 namespace TheSSand.Level
@@ -6,9 +7,8 @@ namespace TheSSand.Level
     public class DesertLevelController : MonoBehaviour
     {
         [Header("레벨 설정")]
+        [SerializeField] int chapter = 1;
         [SerializeField] string nextSceneName = "SCN_Ch1_Oasis";
-        [SerializeField] Transform levelStart;
-        [SerializeField] Transform levelEnd;
 
         [Header("카메라")]
         [SerializeField] Camera mainCamera;
@@ -32,6 +32,7 @@ namespace TheSSand.Level
 
             InitParallax();
 
+            AudioManager.Instance?.PlayBGM($"BGM_Ch{chapter}_Desert");
             SceneTransitionManager.Instance?.FadeIn();
         }
 

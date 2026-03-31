@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using TheSSand.Audio;
 using TheSSand.Core;
 using TheSSand.Scene;
 using TheSSand.Dialogue;
@@ -43,6 +44,7 @@ namespace TheSSand.Boss
                 bossWolf.StartBattle();
             }
 
+            AudioManager.Instance?.PlayBGM("BGM_Ch3_Boss");
             SceneTransitionManager.Instance?.FadeIn();
         }
 

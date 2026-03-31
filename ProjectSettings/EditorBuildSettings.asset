@@ -6,7 +6,73 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/SCN_TitleMenu.unity
+    guid: 40c37e33fceb048c49f5bc5498ada771
+  - enabled: 1
+    path: Assets/Scenes/SCN_Prologue.unity
+    guid: e1e4f7d40f6a6468a851783fe2d3e670
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch1_Desert.unity
+    guid: e8fe00c972a5e443b959d1d686af73dc
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch1_Oasis.unity
+    guid: c1ab681f463c34fd899187fb29493e43
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch1_Boss.unity
+    guid: c1a58eb41cd0f40fc9daa6d03ec5df82
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch2_Desert.unity
+    guid: ada17c27b244a4f3f87c213a5e1a5d12
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch2_Oasis.unity
+    guid: 4ae597ea46181444494dbe21c6148ca0
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch2_Boss.unity
+    guid: 63c078021fecc4abb8df5b882bc7bdc6
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch3_Desert.unity
+    guid: 5ffc8688a6a7c444184b0ed67255dc0a
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch3_Oasis.unity
+    guid: 84ba7fee39aba4fecb42154b4b220d92
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch3_Boss.unity
+    guid: 669ebd2f666b54dbbb409e4cfe77288f
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch4_Desert.unity
+    guid: 306f741e71cc843198dab09ebac2a799
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch4_Oasis.unity
+    guid: a12aeb747320c4c1da6b71a48e4be033
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ch4_Boss.unity
+    guid: 754383ae181da4d8f9d5f9c881e86466
+  - enabled: 1
+    path: Assets/Scenes/SCN_Ending.unity
+    guid: 2de80936e0c094328ad7bc54219d16dd
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch4_Oasis.unity
+    guid: ec96473b33c634dfe951c774dc4e6ad2
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch4_Boss.unity
+    guid: 49d8a33aa56044b998099d2d23a62230
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch3_Oasis.unity
+    guid: cf0f3a361acf64115a95aaed265c83c2
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch3_Boss.unity
+    guid: 73f75ef980e6a4fa4bed09089f115ce7
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch2_Oasis.unity
+    guid: 1fe236a730cdb434abda85768526c56c
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch2_Boss.unity
+    guid: 60d587e1d19fc4778846fbad510e35a0
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch1_Oasis.unity
+    guid: cc3c33ff45e1a48478d888176090b05b
+  - enabled: 1
+    path: Assets/Scenes/SCN_NG_Ch1_Boss.unity
+    guid: d6e5b93e23afe4c3caa9e4b7225617ba
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

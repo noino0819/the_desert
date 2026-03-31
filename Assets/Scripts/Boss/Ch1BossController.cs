@@ -1,4 +1,5 @@
 using UnityEngine;
+using TheSSand.Audio;
 using TheSSand.Core;
 using TheSSand.Scene;
 using TheSSand.Dialogue;
@@ -23,6 +24,7 @@ namespace TheSSand.Boss
                 bossHippo.StartBattle();
             }
 
+            AudioManager.Instance?.PlayBGM("BGM_Ch1_Boss");
             SceneTransitionManager.Instance?.FadeIn();
         }
 

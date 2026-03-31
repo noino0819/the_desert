@@ -1,4 +1,5 @@
 using UnityEngine;
+using TheSSand.Audio;
 using TheSSand.Core;
 using TheSSand.Scene;
 using TheSSand.Dialogue;
@@ -9,7 +10,6 @@ namespace TheSSand.Boss
     public class Ch4BossController : MonoBehaviour
     {
         [SerializeField] BossTurtle bossTurtle;
-        [SerializeField] CardBattleManager cardBattleManager;
         [SerializeField] DialogueData seedDialogue;
         [SerializeField] string nextSceneName = "SCN_Ending";
 
@@ -21,6 +21,7 @@ namespace TheSSand.Boss
                 bossTurtle.StartBattle();
             }
 
+            AudioManager.Instance?.PlayBGM("BGM_Ch4_Boss");
             SceneTransitionManager.Instance?.FadeIn();
         }
 

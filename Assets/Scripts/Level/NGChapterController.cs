@@ -158,10 +158,8 @@ namespace TheSSand.Level
                 yield return new WaitForSeconds(3f);
 
                 int ending = EndingManager.Instance?.EvaluateAndTriggerEnding() ?? 0;
-                if (ending == 5)
-                    Scene.SceneTransitionManager.Instance?.LoadScene("SCN_Ending");
-                else
-                    Scene.SceneTransitionManager.Instance?.LoadScene("SCN_Ending");
+                yield return new WaitForSeconds(1f);
+                Scene.SceneTransitionManager.Instance?.LoadScene("SCN_Ending");
             }
         }
     }

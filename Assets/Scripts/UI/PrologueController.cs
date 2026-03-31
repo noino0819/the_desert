@@ -71,8 +71,8 @@ namespace TheSSand.UI
                     ? "당신의 이름을 입력해주세요"
                     : "용사의 이름을 지어주세요";
 
-            storyPanel?.SetActive(false);
-            nameInputPanel?.SetActive(true);
+            if (storyPanel != null) storyPanel.SetActive(false);
+            if (nameInputPanel != null) nameInputPanel.SetActive(true);
 
             confirmButton?.onClick.AddListener(OnNameConfirmed);
             nameInputField?.onSubmit.AddListener(_ => OnNameConfirmed());
@@ -107,8 +107,8 @@ namespace TheSSand.UI
                     GameManager.Instance.NewGame(_playerName);
             }
 
-            nameInputPanel?.SetActive(false);
-            storyPanel?.SetActive(true);
+            if (nameInputPanel != null) nameInputPanel.SetActive(false);
+            if (storyPanel != null) storyPanel.SetActive(true);
             _storyIndex = 0;
             ShowCurrentStoryLine();
         }

@@ -72,42 +72,57 @@ namespace TheSSand.Quest
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch2_food", questName = "식량 조달",
+                questId = "ch2_survival", questName = "식량 조달",
                 goal = 1, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch2_survive", questName = "생존 기술 전수",
+                questId = "ch2_children", questName = "아이들 돌보기",
                 goal = 1, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch2_skill", questName = "아이들 도움",
+                questId = "ch2_bandit", questName = "산적 대응",
                 goal = 1, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch2_scarfPass", questName = "스카프 전달 (Ch.2)",
+                questId = "ch2_promise", questName = "약속 이행",
                 goal = 1, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch3_doubleAgent", questName = "이중스파이",
+                questId = "ch3_wall", questName = "장벽 문제",
+                goal = 1, flagsOnComplete = new string[0]
+            });
+            RegisterQuest(new QuestData
+            {
+                questId = "ch3_doubleagent", questName = "이중스파이",
                 goal = 2, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch4_chem", questName = "화학 실험",
+                questId = "ch3_unite", questName = "통합",
                 goal = 1, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch4_bio", questName = "생물 실험",
+                questId = "ch4_experiment1", questName = "실험 1",
                 goal = 1, flagsOnComplete = new string[0]
             });
             RegisterQuest(new QuestData
             {
-                questId = "ch4_phys", questName = "물리 실험",
+                questId = "ch4_experiment2", questName = "실험 2",
+                goal = 1, flagsOnComplete = new string[0]
+            });
+            RegisterQuest(new QuestData
+            {
+                questId = "ch4_experiment3", questName = "실험 3",
+                goal = 1, flagsOnComplete = new string[0]
+            });
+            RegisterQuest(new QuestData
+            {
+                questId = "ch4_truth", questName = "진실",
                 goal = 1, flagsOnComplete = new string[0]
             });
         }
